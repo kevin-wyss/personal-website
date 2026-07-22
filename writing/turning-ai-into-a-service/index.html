@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turning AI into a service — Kevin Wyss</title>
+<meta name="description" content="Mapping an enterprise-software service model onto OpenAI's five AI value models to build an AI service.">
+<link rel="stylesheet" href="../../sources/css/site.css">
+<script src="../../sources/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+</helmet>
+
+<div class="site-shell">
+
+  <aside class="article-sidebar">
+    <div class="sidebar-identity">
+      <div class="section-kicker">Zug · Switzerland</div>
+      <a class="site-brand-link" href="../../">Kevin Wyss</a>
+      <div class="site-introduction">Field notes from the messy middle of enterprise tech.</div>
+    </div>
+    <details class="cv-collapse vertical-stack">
+      <summary class="career-toggle">
+        <span class="career-toggle-label">
+          <span class="cv-chevron career-chevron">▶</span>
+          <span class="section-kicker-accent">My career in a nutshell</span>
+        </span>
+        <span class="career-range">2014 → NOW</span>
+      </summary>
+      <div class="article-career-list">
+        <div class="article-career-entry-current">
+          <div class="split-row">
+            <span class="article-career-year-current">2023 →</span>
+            <span class="article-career-location-current">BAAR · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">alpONE<span class="status-dot"></span></span>
+            <span class="article-career-role">Senior Cybersecurity &amp; Technology Consultant</span>
+          </div>
+          <span class="article-career-summary">Leading Cybersecurity &amp; AI programs in Enterprise and financial sector.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2021 — 23</span>
+            <span class="article-career-location">LONDON · UK</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Nexthink</span>
+            <span class="article-career-role">Product Educator <span class="accent-arrow">→</span> Service Delivery Manager</span>
+          </div>
+          <span class="article-career-summary">Built best-practice trainings for successful software adoption. Owned technical and value delivery of use-cases to enterprise customers.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2019 — 20</span>
+            <span class="article-career-location">ZURICH · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">aplus consulting</span>
+            <span class="article-career-role">IT Strategy Consultant</span>
+          </div>
+          <span class="article-career-summary">Helped build up a new enterprise IT organization.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2018 — 19</span>
+            <span class="article-career-location">ZURICH · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Ontrex</span>
+            <span class="article-career-role">Solution Architect</span>
+          </div>
+          <span class="article-career-summary">Designed and deployed enterprise IT software during pre- and post-sales.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2015 — 18</span>
+            <span class="article-career-location">BAAR · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Glencore</span>
+            <span class="article-career-role">IT PMO &amp; Client Engineering</span>
+          </div>
+          <span class="article-career-summary">Delivered large enterprise IT projects for global rollout.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2014</span>
+            <span class="article-career-location">GOLDAU · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Garaventa</span>
+            <span class="article-career-role">IT Support Engineer</span>
+          </div>
+          <span class="article-career-summary">Learned the true meaning of being customer and user centric.</span>
+        </div>
+      </div>
+    </details>
+    <div class="sidebar-overview">
+      <span class="section-kicker">Overview<br></span>
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-link" href="#sec-1">OpenAI's view in short</a>
+        <a class="sidebar-nav-link" href="#sec-2">Where my service approach fits</a>
+        <a class="sidebar-nav-link" href="#sec-3">The right implementation technique</a>
+        <a class="sidebar-nav-link" href="#sec-4">Mapping the artifacts to an agent</a>
+        <a class="sidebar-nav-link" href="#sec-5">How the intake process changes</a>
+        <a class="sidebar-nav-link" href="#sec-6">My current reflection</a>
+      </nav>
+    </div>
+    <div class="sidebar-contact">
+      <span class="contact-link">kevin (at) wyssdom.ai</span>
+      <a class="contact-link" href="https://linkedin.com/in/kevin-wh">/in/kevin-wh</a>
+    </div>
+  </aside>
+
+  <main class="site-main" id="top" data-screen-label="Turning AI into a service article">
+
+    <div class="article-toolbar">
+      <div class="article-back-nav">
+        <a class="article-back-link" href="../../#writing">← All posts</a>
+      </div>
+
+    </div>
+
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="article-topic">AI</span>
+        <span class="article-date">Jul 2026 · 11 min read</span>
+      </div>
+      <h1 class="article-title">Turning AI into a service</h1>
+      <p class="article-deck">How to enhance OpenAIs value models with a use-case intake process to build an AI service.</p>
+    </header>
+
+    <article class="article-content">
+      <aside class="article-disclosure">
+        <span class="article-disclosure-label">A NOTE ABOUT THIS POST AND THE USE OF AI</span>
+        <p class="article-disclosure-copy"><i>This post was written by me and are my thoughts, there might be grammatical errors. <br>For me this is about reflection and sharing my views or a piece of knowledge that worked for me with others.<br><br>I use AI to build the visuals in this post based on slides or sketches I made.</i></p>
+      </aside>
+      <p class="article-copy">In <a href="../how-to-find-value-in-enterprise-software/">my previous post</a>, I wrote about the challenge of finding value in enterprise software once the implementation is finished. The approach I used with customers was to stop treating the platform of choice as a tool and start treating it as a service.</p>
+      <p class="article-copy">In practice, that meant putting three things in place: an intake process for new use cases, a catalog for repeatable requests, and a small set of artifacts to make ownership, priorities and value visible.</p>
+      <p class="article-copy">I ended that post with a note that the same model might be worth revisiting for AI. While reading OpenAI's article on five AI value models, I felt like it was a useful structure to map my model against.<a class="footnote-reference" href="#fn-1"><sup>1</sup></a></p>
+
+      <h2 class="article-section-title" id="sec-1">OpenAI's view in short</h2>
+      <p class="article-copy">OpenAI describes five value models that are emerging most clearly in the Enterprise setting. I do not read them as a strict ladder and my interpretation is that they can cross-pollinate. OpenAI even points out in their article that an organization may work across several at the same time.</p>
+
+
+      <figure class="article-figure-overflow">
+        <div class="figure-header">
+          <span class="figure-label">FIG. 01 · OPENAI'S FIVE AI VALUE MODELS</span>
+          <span class="figure-source">SOURCE · OPENAI, 2026</span>
+        </div>
+        <div class="ai-figure-1-surface-01">
+          <div class="ai-figure-1-layout-01">
+
+            <span class="ai-figure-1-text-01">HOVER A LAYER ▾</span>
+          </div>
+          <div class="ai-figure-1-layout-02">
+
+            <div class="ai-figure-1-surface-02" onMouseEnter="{{ enter5 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">05</span>
+                <span class="ai-figure-1-text-03">Process re-engineering</span>
+                <span class="ai-figure-1-text-04">End-to-end workflows with agents</span>
+              </div>
+              <sc-if value="{{ show5 }}" hint-placeholder-val="{{ false }}">
+                <div class="ai-figure-1-overlay-01">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">05</span><span class="ai-figure-1-text-06">Process re-engineering</span></div><p class="ai-figure-1-text-07">The slowest model to scale and often the most transformative. Agents orchestrate end-to-end workflows within and across functions. The upside is exponential, but only when the foundations are real: identity and access controls, clean permissions, observability at scale, exception handling and clear ownership. Re-engineering forces the organization to revisit what the process is for and where judgment belongs.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">End-to-end cycle time</li><li class="ai-figure-1-text-09">Exception rate &amp; resolution time</li><li class="ai-figure-1-text-09">Compliance &amp; innovation output</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Automating end-to-end before permissions, controls and accountability are mature.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Pick one workflow; run a readiness assessment across identity, logging, exceptions and ownership.</p></div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div class="ai-figure-1-surface-03" onMouseEnter="{{ enter4 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">04</span>
+                <span class="ai-figure-1-text-03">Systems &amp; dependencies</span>
+                <span class="ai-figure-1-text-04">Controlled change across connected artifacts</span>
+              </div>
+              <sc-if value="{{ show4 }}" hint-placeholder-val="{{ false }}">
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">04</span><span class="ai-figure-1-text-06">Systems &amp; dependency management</span></div><p class="ai-figure-1-text-07">Coding agents are the clearest example, but the larger model is safe upgrades across interconnected systems of work: SOPs, contracts, policies, customer narratives and onboarding flows that must stay consistent as they evolve. This is less about generation than control: faster updates, fewer downstream breakages, stronger compliance and better auditability.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Time to safe change &amp; conflict resolution</li><li class="ai-figure-1-text-09">Audit readiness &amp; traceability</li><li class="ai-figure-1-text-09">Downstream consistency</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Scaling generation faster than governance, creating systemic debt.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Start with one high-dependency domain; map the dependency graph and approval path first.</p></div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div class="ai-figure-1-surface-04" onMouseEnter="{{ enter3 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">03</span>
+                <span class="ai-figure-1-text-03">Expert capability</span>
+                <span class="ai-figure-1-text-04">Faster and broader expert work</span>
+              </div>
+              <sc-if value="{{ show3 }}" hint-placeholder-val="{{ false }}">
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">03</span><span class="ai-figure-1-text-06">Expert capability</span></div><p class="ai-figure-1-text-07">Inserts specialized AI into research, creative and domain-heavy work. Near term it compresses expert bottlenecks; over time it changes the operating model, as teams shift from producing first drafts to directing, reviewing and integrating high-quality outputs generated in real time. The value is in expanding what the team can examine, test or produce.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Cycle-time on expert bottlenecks</li><li class="ai-figure-1-text-09">Quality lift: reviewer scores, rework</li><li class="ai-figure-1-text-09">Expanded scope of work examined</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Treating it as a demo rather than embedding it in a real, accountable workflow.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Choose one bottleneck; agree what evidence turns a concept into a building block.</p></div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div class="ai-figure-1-surface-05" onMouseEnter="{{ enter2 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">02</span>
+                <span class="ai-figure-1-text-03">AI-native distribution</span>
+                <span class="ai-figure-1-text-04">Trust at moments of customer intent</span>
+              </div>
+              <sc-if value="{{ show2 }}" hint-placeholder-val="{{ false }}">
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">02</span><span class="ai-figure-1-text-06">AI-native distribution</span></div><p class="ai-figure-1-text-07">AI is changing how customers discover, evaluate and choose products and services. In AI-native channels, conversion increasingly happens inside a conversation, shifting the growth question from reach to trust and presence at moments of intent. The winners will be the most useful, credible and well-timed when a decision is being made.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Qualified intent &amp; iterations to commit</li><li class="ai-figure-1-text-09">Conversion quality: retention, upsell, LTV</li><li class="ai-figure-1-text-09">Trust signals: return, referral</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Running it like a legacy demand funnel that chases volume over relevance and durable trust.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Pick one surface and define conversion quality before scaling spend.</p></div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div class="ai-figure-1-surface-06" onMouseEnter="{{ enter1 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">01</span>
+                <span class="ai-figure-1-text-03">Workforce empowerment</span>
+                <span class="ai-figure-1-text-04">Fluency and reusable workflows</span>
+                <span class="ai-figure-1-text-12">FOUNDATION</span>
+              </div>
+              <sc-if value="{{ show1 }}" hint-placeholder-val="{{ false }}">
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">01</span><span class="ai-figure-1-text-06">Workforce empowerment</span></div><p class="ai-figure-1-text-07">The fastest value model to activate. It spreads practical AI capability across the workforce, creating near-term productivity gains while building the fluency required for deeper transformation. The larger benefit is organizational readiness. HR can enable, Legal can govern, Finance can fund, and teams can collaborate with a shared understanding of where AI works and how to use it safely.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Repeated use by role &amp; proficiency</li><li class="ai-figure-1-text-09">Reusable prompts, workflows &amp; assets</li><li class="ai-figure-1-text-09">Cross-functional enablement</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">A two-tier workforce, where power users advance while everyone else stalls.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Build a champions network and starter workflows that make best practice relatable.</p></div>
+                </div>
+              </sc-if>
+            </div>
+
+          </div>
+          <div class="ai-figure-1-text-13">CAPABILITIES CAN COMPOUND ACROSS THE PORTFOLIO</div>
+          <div class="ai-figure-1-layout-08"><span class="ai-figure-1-text-14">↓</span><span class="ai-figure-1-text-14">↓</span><span class="ai-figure-1-text-14">↓</span></div>
+          <div class="ai-figure-1-layout-09">
+            <div class="ai-figure-1-text-15">TRUST</div>
+            <div class="ai-figure-1-text-15">VALUE</div>
+            <div class="ai-figure-1-text-15">SCALE</div>
+          </div>
+
+        </div>
+
+      </figure>
+
+      <p class="article-copy">OpenAI groups the practical adoption path into three broader phases: build trust, capture value, then scale with potential to reconsider the operating model.</p>
+
+      <h2 class="article-section-title" id="sec-2">Where my service approach fits</h2>
+      <p class="article-copy">The five value models describe where an organization may create value with AI. My service approach is more concerned with how a team receives demand, decides what to work on and turns a capability into something the organization can generate value from.</p>
+      <p class="article-copy">I therefore see it as a practical structure that enables the OpenAI value models rather than an alternative to it. The governance model runs as one connected process, and all of it stays in play whichever value model a piece of demand serves. The table below shows where that process adds the most to each value model.</p>
+
+      <div class="comparison-table">
+        <div class="comparison-table-header">
+          <span class="comparison-heading-primary">OpenAI value model</span>
+          <span class="comparison-heading-secondary">How the governance model enhances delivery</span>
+        </div>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM1</span>Workforce empowerment</span>
+          <span class="comparison-copy">A small service catalog gives employees useful starting points. Guidelines, named owners and a governance board make acceptable use clearer and give people somewhere to take questions. The intake process also gives power users a route for sharing new workflows with the wider organization.</span>
+        </div>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM2</span>AI-native distribution</span>
+          <span class="comparison-copy">Intake and value tracking can help decide which customer-facing experiences are worth developing. Because my original model was designed for an internal platform, this would also require product management, customer research and measures such as conversion quality.</span>
+        </div>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM3</span>Expert capability</span>
+          <span class="comparison-copy">Domain-heavy work leans hardest on the use-case lane: a clear owner, expert review and an agreed definition of good. The success plan and value tracker can capture cycle-time, quality and the scope of work made possible.</span>
+        </div>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM4</span>Systems &amp; dependency mgmt</span>
+          <span class="comparison-copy">The roadmap, program tracker, guidelines and governance board provide part of the control structure. A dependency map, versioning, approval evidence and a clearer record of downstream changes would extend it.</span>
+        </div>
+        <div class="comparison-row-last">
+          <span class="comparison-label"><span class="comparison-code">VM5</span>Process re-engineering</span>
+          <span class="comparison-copy">Here the whole process pays off as a lifecycle: deciding which workflows should become agents, proving that they work, and operating the successful ones as managed services with clear ownership and exception handling.</span>
+        </div>
+      </div>
+
+      <p class="article-copy">Put against OpenAI's three adoption phases, the same logic holds: the whole process runs throughout, with the emphasis shifting. The model I propose could also be implemented on a per team basis to keep value-case processing and delivery as lean as possible.</p>
+
+      <h2 class="article-section-title" id="sec-3">What is the right AI implementation technique?</h2>
+      <p class="article-copy">My original model separated demand into two lanes. The service lane handled predefined, low-complexity requests. The use-case lane handled work that was unique, less certain and potentially more valuable.</p>
+      <p class="article-copy">For AI, I would keep that split but change the intake a bit. The core assessment becomes: what is the right implementation technique? In practice there are four escalating options:</p>
+      <ul class="article-list">
+        <li class="article-list-item"><strong class="article-list-lead">A project with prompting:</strong> curated context and well-structured prompts for one role's repeated task. The fastest option, owned by the person doing the work.</li>
+        <li class="article-list-item"><strong class="article-list-lead">A skill:</strong> that same expertise packaged with instructions, examples and resources so anyone can invoke it the same way. A good skill can become a shared asset.</li>
+        <li class="article-list-item"><strong class="article-list-lead">A workflow:</strong> a defined sequence of steps with AI at fixed points. Software orchestrates the path instead of a model making a decision.</li>
+        <li class="article-list-item"><strong class="article-list-lead">An agent:</strong> the model runs the workflow or decides which workflow to run. It plans, uses tools and handles exceptions with guardrails set up.</li>
+      </ul>
+
+      <p class="article-copy">The assessment then routes demand through the two lanes of my original model:</p>
+      <ul class="article-list">
+        <li class="article-list-item"><strong class="article-list-lead">Service lane:</strong> prompting projects, skills and existing AI capabilities. Repeatable requests with a known outcome, configured and delivered in days.</li>
+        <li class="article-list-item"><strong class="article-list-lead">Use-case lane:</strong> workflow and agent candidates — work with ambiguity, judgment or several systems involved, taken through a value and risk gate, a pilot and evaluation before a roadmap decision.</li>
+      </ul>
+      <p class="article-copy">A proven use case graduates into the service catalog with whatever implementation technique was utilised: a skill others can invoke, a managed workflow, or a managed agent service with an owner, a defined scope, expected service levels and a known route for exceptions.</p>
+
+      <figure class="article-figure">
+        <div class="ai-figure-2-layout-01">
+          <span class="figure-label">FIG. 02 · CHOOSING THE IMPLEMENTATION TECHNIQUE</span>
+          <span class="ai-figure-2-layout-02"><span class="ai-figure-2-text-01"><span class="ai-figure-2-surface-01"></span>VM = OPENAI VALUE MODEL</span><span class="ai-figure-2-text-02"><span class="ai-figure-2-surface-02"></span>NEW AI ELEMENTS</span></span>
+        </div>
+        <div class="ai-figure-2-surface-03"><div class="ai-figure-2-layout-03">
+          <div class="ai-figure-2-layout-04"><div class="ai-figure-2-text-03">NEW REQUEST OR IDEA</div></div>
+          <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-04"></div></div>
+          <div class="ai-figure-2-surface-05">
+            <span class="ai-figure-2-text-04">STEP 1 · MAP IT AGAINST ONE OF OPENAI'S FIVE VALUE MODELS</span>
+            <div class="ai-figure-2-layout-05"><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM1</span><span class="ai-figure-2-text-07">WORKFORCE EMPOWERMENT</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM2</span><span class="ai-figure-2-text-07">AI-NATIVE DISTRIBUTION</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM3</span><span class="ai-figure-2-text-07">EXPERT CAPABILITY</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM4</span><span class="ai-figure-2-text-07">SYSTEMS &amp; DEPENDENCY MGMT</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM5</span><span class="ai-figure-2-text-07">PROCESS RE-ENGINEERING</span></div></div>
+            <span class="ai-figure-2-text-08">DASHED LINES SHOW THE IMPLEMENTATION TECHNIQUES EACH VALUE MODEL TYPICALLY LEADS TO</span>
+          </div>
+          <svg class="ai-figure-2-layout-06" viewBox="0 0 1000 134" preserveAspectRatio="none" aria-hidden="true"><path d="M100,0 L100,38 C100,72 125,64 125,90 L125,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M100,0 L100,38 C100,72 375,64 375,90 L375,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M300,0 L300,38 C300,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M300,0 L300,38 C300,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 375,64 375,90 L375,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M700,0 L700,38 C700,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M700,0 L700,38 C700,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M900,0 L900,38 C900,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M900,0 L900,38 C900,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path></svg>
+          <div class="ai-figure-2-surface-06">
+            <div class="ai-figure-2-layout-07">
+              <div class="ai-figure-2-layout-08"><span class="ai-figure-2-surface-02"></span><span class="ai-figure-2-text-09">STEP 2 · WHAT IS THE RIGHT IMPLEMENTATION TECHNIQUE?</span></div>
+              <span class="ai-figure-2-text-10">LIGHTEST → HEAVIEST</span>
+            </div>
+            <div class="ai-figure-2-layout-09"><div class="ai-figure-2-surface-07"><span class="ai-figure-2-text-11">01</span><span class="ai-figure-2-text-12">PROMPTING PROJECT</span><span class="ai-figure-2-text-13">CURATED CONTEXT FOR ONE ROLE'S REPEATED TASK</span></div><div class="ai-figure-2-surface-07"><span class="ai-figure-2-text-11">02</span><span class="ai-figure-2-text-12">SKILL</span><span class="ai-figure-2-text-13">PACKAGED EXPERTISE ANYONE CAN INVOKE</span></div><div class="ai-figure-2-surface-08"><span class="ai-figure-2-text-11">03</span><span class="ai-figure-2-text-12">WORKFLOW</span><span class="ai-figure-2-text-13">FIXED STEPS, AI AT SET POINTS</span></div><div class="ai-figure-2-surface-09"><span class="ai-figure-2-text-06">04</span><span class="ai-figure-2-text-14"><span class="ai-figure-2-surface-10"></span>AGENT</span><span class="ai-figure-2-text-15">MODEL PLANS, ACTS &amp; HANDLES EXCEPTIONS</span></div></div>
+            <span class="ai-figure-2-text-16">AGENT ONLY WHEN: NUANCED DECISIONS · HARD-TO-MAINTAIN RULES · UNSTRUCTURED INFORMATION</span>
+          </div>
+          <div class="ai-figure-2-box-01">
+            <svg class="ai-figure-2-layout-10" viewBox="0 0 1000 96" preserveAspectRatio="none" aria-hidden="true"><path d="M125,0 L125,44 C125,74 250,66 250,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M375,0 L375,44 C375,74 250,66 250,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M625,0 L625,44 C625,74 750,66 750,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M875,0 L875,44 C875,74 750,66 750,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path></svg>
+            <span class="ai-figure-2-overlay-01">STEP 3 · ROUTE INTO A LANE</span>
+          </div>
+          <div class="ai-figure-2-layout-11">
+            <div class="ai-figure-2-surface-11">
+              <span class="ai-figure-2-overlay-02">01 + 02</span>
+              <div class="ai-figure-2-text-17">
+                <span class="ai-figure-2-layout-12"><span class="ai-figure-2-text-18">SERVICE LANE</span></span>
+                <span class="ai-figure-2-text-13">REPEATABLE · PREDICTABLE · KNOWN OUTCOME</span>
+              </div>
+              <span class="ai-figure-2-text-19">STANDARD REQUEST</span>
+              <span class="ai-figure-2-text-20">PROMPTING PROJECTS · SKILLS · EXISTING AI CAPABILITIES</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-12"></div></div>
+              <span class="ai-figure-2-text-19">CATALOG FORM</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-12"></div></div>
+              <span class="ai-figure-2-text-19">PLATFORM TEAM</span>
+              <span class="ai-figure-2-text-20">HANDLED ENTIRELY BY THE TEAM · NO GATES</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-12"></div></div>
+              <span class="ai-figure-2-text-21">DELIVERY</span>
+              <span class="ai-figure-2-text-22">THE LIGHTEST TECHNIQUE THAT WORKS</span>
+            </div>
+            <div class="ai-figure-2-surface-13">
+              <span class="ai-figure-2-overlay-03">03 + 04</span>
+              <div class="ai-figure-2-text-17">
+                <span class="ai-figure-2-layout-12"><span class="ai-figure-2-text-23">USE-CASE LANE</span></span>
+                <span class="ai-figure-2-text-15">JUDGMENT · EXCEPTIONS · UNSTRUCTURED INFO</span>
+              </div>
+              <span class="ai-figure-2-text-24">COLLECT &amp; ROUTE</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-24">VALIDATE &amp; ESTIMATE VALUE + RISK</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-24">DECISION TO CONTINUE</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-24">PRIORITIZE &amp; ESTIMATE EFFORT</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-25"><span class="ai-figure-2-surface-15"></span>EVALS</span>
+              <div class="ai-figure-2-layout-13"><span class="ai-figure-2-text-26">PASS ↓</span><span class="ai-figure-2-text-27">FAIL ↺ STOP IS A VALID OUTCOME</span></div>
+              <span class="ai-figure-2-text-24">ROADMAP DECISION</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-25">DELIVERY</span>
+            </div>
+          </div>
+          <div class="ai-figure-2-layout-14">
+            <div class="ai-figure-2-box-02"></div>
+            <div class="ai-figure-2-box-03"></div>
+          </div>
+          <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-16"></div></div>
+          <div class="ai-figure-2-layout-15"><span class="ai-figure-2-text-28">STEP 4 · GRADUATE INTO THE CATALOG</span></div>
+          <div class="ai-figure-2-layout-04">
+            <div class="ai-figure-2-surface-17">
+              <span class="ai-figure-2-layout-16"><span class="ai-figure-2-text-18">SERVICE CATALOG</span></span>
+              <div class="ai-figure-2-layout-17"><span class="ai-figure-2-text-29">PROMPT PROJECTS</span><span class="ai-figure-2-text-29">SKILLS</span><span class="ai-figure-2-text-29">WORKFLOWS</span><span class="ai-figure-2-text-30"><span class="ai-figure-2-surface-10"></span>MANAGED AGENT SERVICE</span></div>
+
+            </div>
+          </div>
+        </div></div>
+        <figcaption class="ai-figure-2-text-31">A new request or idea is first mapped against one of OpenAI's five value models (VM1–VM5). The value model sets the value, risk and ownership expectations that steer the choice of implementation technique (01–04), and the technique routes the work into the service lane or the use-case lane. Both lanes ultimately feed and maintain a service catalog of an AI service(s) and capabilities.</figcaption>
+      </figure>
+
+      <h2 class="article-section-title" id="sec-4">Mapping the service artifacts to an AI service</h2>
+      <p class="article-copy">Most of my original service artifacts have a natural place in the structure of this AI service design but I think a few potential modifications or adjustments should be made:</p>
+
+      <div class="comparison-table">
+        <div class="comparison-table-header-accent">
+          <span class="comparison-heading-primary">Original component</span>
+          <span class="comparison-heading-secondary">IDEAL ROLE WHEN BUILDING AN AI SERVICE</span>
+        </div>
+        <div class="artifact-row">
+          <span class="artifact-name">Use-case lead</span>
+          <span class="artifact-description">Becomes the accountable service owner and owns the workflow from initial request through production.</span>
+        </div>
+        <div class="artifact-row">
+          <span class="artifact-name">Guidelines</span>
+          <span class="artifact-description">Provide the source for AI instructions, policies, decision rules and expected handling of edge cases.</span>
+        </div>
+        <div class="artifact-row">
+          <span class="artifact-name">Service catalog</span>
+          <span class="artifact-description">Lists the services that are proven and repeatable. Underneath it, the tools used by AI (especially agents) also need standardized definitions and owners.</span>
+        </div>
+        <div class="artifact-row">
+          <span class="artifact-name">Success plan</span>
+          <span class="artifact-description">Defines the expected outcome, acceptance criteria and the evidence required from an organizational perspective.</span>
+        </div>
+        <div class="artifact-row">
+          <span class="artifact-name">Value tracker</span>
+          <span class="artifact-description">Tracks business value together with quality, errors, exception rates, human escalations and rework.</span>
+        </div>
+        <div class="artifact-row">
+          <span class="artifact-name">Roadmap &amp; program tracker</span>
+          <span class="artifact-description">Manage capability releases, dependencies, integrations and planned improvements.</span>
+        </div>
+        <div class="artifact-row-last">
+          <span class="artifact-name">Governance board</span>
+          <span class="artifact-description">Decides which use-cases to implement, data and actions an agent may access, which actions require approval and when work must return to a person.</span>
+        </div>
+      </div>
+
+      <p class="article-copy">Three key additions are critical from some form of governance:</p>
+      <p class="article-copy"><strong class="article-list-lead">First, evaluations and observability.</strong> The team needs a definition of good and a way to test against it.</p>
+      <p class="article-copy"><strong class="article-list-lead">Second, permissions at tool and action level.</strong> Reading a policy document is not the same risk as changing a customer record or approving a payment. The governance board has to take accountability here and make the teams lives easier.</p>
+      <p class="article-copy"><strong class="article-list-lead">Third, human intervention as part of the service design.</strong> By implementing these processes we can dictate early on what the guardrails should look like for human intervention.</p>
+
+
+
+
+
+
+
+
+      <h2 class="article-section-title" id="sec-6">Final thoughts</h2>
+      <p class="article-copy">I have been working with a combination of these models for my current role for a while now and I think it works pretty well. I don't think it would hold up perfectly in an enterprise setting but I think with a few modifications it could work.<br><br>The idea I like the most within this post is the prospect of implementing this on a per team level. Imagine you placed an Applied AI Engineer into a business with these models as guardrails. Could have the potential for high impact, no? Curious to hear your thoughts. Feel free to send me direct messages or an email.</p>
+
+
+
+
+
+      <div class="sources-block">
+        <h2 class="sources-title">Sources</h2>
+        <p class="source-entry" id="fn-1"><span class="source-number">1.</span> OpenAI, <em>The five AI value models driving business reinvention</em>. <a href="https://openai.com/index/the-five-ai-value-models-driving-business-reinvention/">Read the article</a></p>
+        <p class="source-entry" id="fn-2"><span class="source-number">2.</span> OpenAI, <em>A practical guide to building agents</em>. <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">Read the guide</a></p>
+      </div>
+    </article>
+
+    <div class="author-card">
+      <div class="author-card-inner">
+        <div class="author-monogram">KW</div>
+        <div class="author-details">
+          <span class="author-name">Kevin Wyss</span>
+          <span class="author-role">Senior Consultant at alpONE</span>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <footer class="article-footer">
+      <span class="copyright">© 2026 Kevin Wyss</span>
+
+    </footer>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hovered: null };
+  renderVals() {
+    const set = (n) => () => this.setState({ hovered: n });
+    return {
+      enter1: set(1), enter2: set(2), enter3: set(3), enter4: set(4), enter5: set(5),
+      leave: () => this.setState({ hovered: null }),
+      show1: this.state.hovered === 1,
+      show2: this.state.hovered === 2,
+      show3: this.state.hovered === 3,
+      show4: this.state.hovered === 4,
+      show5: this.state.hovered === 5,
+    };
+  }
+}
+</script>
+</body>
+</html>

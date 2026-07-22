@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to find value in Enterprise Software — Kevin Wyss</title>
+<meta name="description" content="A practical governance model for helping enterprise IT teams create value after software implementation.">
+<link rel="stylesheet" href="../../sources/css/site.css">
+<script src="../../sources/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="../../sources/js/gm-tooltips.js"></script>
+</helmet>
+
+<div class="site-shell">
+
+  <aside class="article-sidebar">
+    <div class="sidebar-identity">
+      <div class="section-kicker">Zug · Switzerland</div>
+      <a class="site-brand-link" href="../../">Kevin Wyss</a>
+      <div class="site-introduction">Field notes from the messy middle of enterprise tech.</div>
+    </div>
+    <details class="cv-collapse vertical-stack">
+      <summary class="career-toggle">
+        <span class="career-toggle-label">
+          <span class="cv-chevron career-chevron">▶</span>
+          <span class="section-kicker-accent">My career in a nutshell</span>
+        </span>
+        <span class="career-range">2014 → NOW</span>
+      </summary>
+      <div class="article-career-list">
+        <div class="article-career-entry-current">
+          <div class="split-row">
+            <span class="article-career-year-current">2023 →</span>
+            <span class="article-career-location-current">BAAR · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">alpONE<span class="status-dot"></span></span>
+            <span class="article-career-role">Senior Cybersecurity &amp; Technology Consultant</span>
+          </div>
+          <span class="article-career-summary">Leading Cybersecurity &amp; AI programs in Enterprise and financial sector.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2021 — 23</span>
+            <span class="article-career-location">LONDON · UK</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Nexthink</span>
+            <span class="article-career-role">Product Educator <span class="accent-arrow">→</span> Service Delivery Manager</span>
+          </div>
+          <span class="article-career-summary">Built best-practice trainings for successful software adoption. Owned technical and value delivery of use-cases to enterprise customers.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2019 — 20</span>
+            <span class="article-career-location">ZURICH · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">aplus consulting</span>
+            <span class="article-career-role">IT Strategy Consultant</span>
+          </div>
+          <span class="article-career-summary">Helped build up a new enterprise IT organization.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2018 — 19</span>
+            <span class="article-career-location">ZURICH · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Ontrex</span>
+            <span class="article-career-role">Solution Architect</span>
+          </div>
+          <span class="article-career-summary">Designed and deployed enterprise IT software during pre- and post-sales.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2015 — 18</span>
+            <span class="article-career-location">BAAR · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Glencore</span>
+            <span class="article-career-role">IT PMO &amp; Client Engineering</span>
+          </div>
+          <span class="article-career-summary">Delivered large enterprise IT projects for global rollout.</span>
+        </div>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2014</span>
+            <span class="article-career-location">GOLDAU · CH</span>
+          </div>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Garaventa</span>
+            <span class="article-career-role">IT Support Engineer</span>
+          </div>
+          <span class="article-career-summary">Learned the true meaning of being customer and user centric.</span>
+        </div>
+      </div>
+    </details>
+    <div class="sidebar-overview">
+      <span class="section-kicker">Overview</span>
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-link" href="#sec-1">What I did with Nexthink</a>
+        <a class="sidebar-nav-link" href="#sec-2">My go-to process when building a service</a>
+        <a class="sidebar-nav-link" href="#sec-3">What is missing: a service catalog</a>
+        <a class="sidebar-nav-link" href="#sec-4">The artifacts that hold it together</a>
+        <a class="sidebar-nav-link" href="#sec-5">Why this transfers to other platforms</a>
+        <a class="sidebar-nav-link" href="#sec-6">My current view</a>
+      </nav>
+    </div>
+    <div class="sidebar-contact">
+      <span class="contact-link">kevin (at) wyssdom.ai</span>
+      <a class="contact-link" href="https://linkedin.com/in/kevin-wh">/in/kevin-wh</a>
+    </div>
+  </aside>
+
+  <main class="site-main" id="top" data-screen-label="Governance model article">
+
+    <div class="article-toolbar">
+      <div class="article-back-nav">
+        <a class="article-back-link" href="../../#writing">← All posts</a>
+      </div>
+
+    </div>
+
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="article-topic">ENTERPRISE SOFTWARE</span>
+        <span class="article-date">Jun 2026 · 7 min read</span>
+      </div>
+      <h1 class="article-title">How to find value in Enterprise Software</h1>
+      <p class="article-deck">A common theme I have seen during my time as Solution Architect and Service Delivery Manager within Enterprise Software is the struggle to find or create value from a product post-implementation or purchase.<br></p>
+    </header>
+
+    <article class="article-content">
+      <aside class="article-disclosure">
+        <span class="article-disclosure-label">A NOTE ABOUT THIS POST AND THE USE OF AI</span>
+        <p class="article-disclosure-copy"><i>This post was written by me and are my thoughts, there might be grammatical errors. <br>For me this is about reflection and sharing my views or a piece of knowledge that worked for me with others.<br><br>I use AI to build the visuals in this post based on slides or sketches I made.</i></p>
+      </aside>
+      <p class="article-copy">Most enterprise software deployments I have been part of ended well. The rollout finished, the platform worked, and the professional services engagement ended.</p>
+      <p class="article-copy">The issue came afterwards: Across almost every customer I worked with, the pattern was the same: a capable platform with tons of useful data, a small team or single person responsible for it, and no or barely any captured value.</p>
+      <p class="article-copy">In the conversations that followed a focal point was always the tool itself. There was an underlying expectation that value just comes from having the platform implemented. The issue I saw was that, although a tool could always improve, technology is only one of three verticals: <i><b>People, Process</b> and Technology.</i>&nbsp;If an organization doesn't dedicate the right people or resources and implement the supporting processes then technology adoption is guaranteed to fail one way or another.<br></p>
+
+      <p class="article-copy">To simplify this in the enterprise context: If you look at enterprise software such as SAP or ServiceNow, look at the amount of effort it takes to support an organization in their successful use. My observation is that this applies to any enterprise software platform in varying degrees.</p>
+
+      <div class="adoption-figure">
+        <div class="compact-figure-header">
+          <span class="figure-label">THE THREE VERTICALS TO SUCCESSFUL TECHNOLOGY ADOPTION</span>
+
+        </div>
+        <div class="adoption-diagram">
+          <div class="adoption-equation">
+            <div class="adoption-pillar">
+              <span class="adoption-index">01</span>
+              <span class="adoption-pillar-title">People</span>
+              <span class="adoption-pillar-copy">The right owners and resources dedicated to the platform.</span>
+            </div>
+            <div class="adoption-plus">+</div>
+            <div class="adoption-pillar">
+              <span class="adoption-index">02</span>
+              <span class="adoption-pillar-title">Process</span>
+              <span class="adoption-pillar-copy">Supporting workflows that turn capability into outcomes.</span>
+            </div>
+            <div class="adoption-plus">+</div>
+            <div class="adoption-pillar-highlighted">
+              <span class="adoption-index-highlighted">03</span>
+              <span class="adoption-title-highlighted">Technology</span>
+              <span class="adoption-pillar-copy">The tool itself — necessary, but only one of the three.</span>
+            </div>
+          </div>
+          <div class="adoption-warning">
+            <div class="adoption-warning-line"></div>
+            <span class="adoption-warning-copy">NEGLECT ANY ONE → ADOPTION FAILS</span>
+            <div class="adoption-warning-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="article-section-title" id="sec-1">What I did with Nexthink</h2>
+      <p class="article-copy">For my customers that faced these issues I tried to find a model thats reusable regardless of resource capacity to make it work for their organizations.</p>
+      <p class="article-copy">The first thing was to change the mental picture of a tool or platform. My priority was for our customers to view it as a <i class="inline-emphasis"><b>service.</b></i></p>
+      <p class="article-copy">Positioning the platform as a service rather than a tool immediately had an impact in perception for my customers. The conversations moved from trying to aimlessly find value within the tool to building a structure around it that enables finding value with ease.</p>
+
+      <h2 class="article-section-title" id="sec-2">My go-to process when building a service</h2>
+
+
+      <p class="article-copy">A use-case intake process really shifted how my customers started working with our platform and building their service. Having a process that allows an application owner to put a lifecycle on an idea, ask or request enabled them to understand what the next thing is they should be working on within the platform.<br></p><figure class="article-figure-contained">
+        <div class="compact-figure-header">
+          <span class="figure-label">FIG. 01 · USE-CASE INTAKE</span>
+          <span class="figure-source">HOVER OVER THE PROCESS STEPS FOR DETAILED INSTRUCTIONS</span>
+        </div>
+        <div class="governance-figure-1-surface-01">
+        <div class="governance-figure-1-layout-01">
+          <div class="governance-figure-1-layout-02">
+            <div class="governance-figure-1-layout-03" data-gm-step="">
+              <div class="governance-figure-1-text-01">COLLECT &amp;&nbsp;ROUTE</div>
+              <div class="governance-figure-1-overlay-01" data-gm-tip="">
+                <div class="governance-figure-1-overlay-02"></div>
+                <div class="governance-figure-1-text-02">STEP 01</div>
+                <div class="governance-figure-1-text-03">Collect &amp; Route</div>
+                <p class="governance-figure-1-text-04">The logic is that ideas, asks or requests can come from different sources. What's important is that each one gets assigned to a <strong class="governance-figure-1-box-01">use-case lead</strong> for the remainder of the process — this ensures ownership, but also continuity in retaining context while the request is being worked.</p>
+                <div class="governance-figure-1-box-02">
+                  <div class="governance-figure-1-text-05">ON THE USE-CASE LEAD</div>
+                  <p class="governance-figure-1-text-06">The use-case lead does not have to be an application owner. Not every organization has the luxury of dedicated resources working on only one platform. It could be a member of a team — as long as it's someone with competency in the use of the platform or product.</p>
+                </div>
+              </div>
+            </div>
+            <div class="governance-figure-1-layout-03" data-gm-step="">
+              <div class="governance-figure-1-text-07">VALIDATE &amp; ESTIMATE VALUE</div>
+              <div class="governance-figure-1-overlay-03" data-gm-tip="">
+                <div class="governance-figure-1-overlay-02"></div>
+                <div class="governance-figure-1-text-02">STEP 02</div>
+                <div class="governance-figure-1-text-03">Validate &amp; Estimate Value</div>
+                <p class="governance-figure-1-text-08">This step, to me, has always been the most critical.</p>
+                <div class="governance-figure-1-text-05">VALIDATE</div>
+                <p class="governance-figure-1-text-09">Validating the use-case is important because we need to ensure the platform or product can actually do what the use-case wants it to (at least on a high level). As an exaggerated example: a request to the <strong class="governance-figure-1-box-01">Azure</strong> platform team to store physical cars in it doesn't make sense.</p>
+                <div class="governance-figure-1-text-05">ESTIMATE VALUE</div>
+                <p class="governance-figure-1-text-10">One of the most common points of failure in adoption journeys for Nexthink customers was not trying to value use-cases before implementing them. A famous example for me was IT departments reducing the logon or boot duration for endpoints. Almost always it was one of the first use-cases they prioritized, dedicating significant engineering hours toward it — but in terms of value it often was disastrous in most organizations. Why? Because while a 30-second saving in boot or logon duration might sound impressive, the reality was that (a) users didn't go through this process daily, and (b) summed up to a money figure it barely moved the needle for an enterprise setting.</p>
+                <div class="governance-figure-1-text-11">no. of devices × time saved per device (s) × runs per year<br>= total time saved (s) &nbsp;÷&nbsp; 60 = total time saved (hrs)<br>× avg. hourly rate of employee productivity<br><span class="governance-figure-1-box-03">= total estimated value for this use-case</span></div>
+                <p class="governance-figure-1-text-12">Now imagine you targeted the most recurring and time-consuming IT service-desk tickets? Then we're not talking about seconds, but hours of lost productivity — cost savings not just on the employee side but also on the side of IT professionals. All of this can be ascertained, most of the time, with little effort — and before any time is spent engineering a solution.</p>
+              </div>
+            </div>
+            <div class="governance-figure-1-layout-03" data-gm-step="">
+              <div class="governance-figure-1-text-13">DECISION TO CONTINUE</div>
+              <div class="governance-figure-1-overlay-04" data-gm-tip="">
+                <div class="governance-figure-1-overlay-05"></div>
+                <div class="governance-figure-1-text-02">STEP 03</div>
+                <div class="governance-figure-1-text-03">Decision to Continue</div>
+                <p class="governance-figure-1-text-14">This is an opportunity to decide if a use-case should <strong class="governance-figure-1-box-01">continue</strong>, or if the facts say it should be <strong class="governance-figure-1-box-01">closed or rejected</strong>.</p>
+                <div class="governance-figure-1-box-04">
+                  <div class="governance-figure-1-text-05">ON PEOPLE</div>
+                  <p class="governance-figure-1-text-06">From a people perspective this can be flexible as well. In very large enterprise settings, or in environments where the application owner / platform team face repeated pressure on which use-cases are implemented, this is a good gate to present a use-case and let leadership decide if they'd like to proceed. But it can also just be a simple decision by the application owner. This process is meant to be easily amended for organizations to fit their needs.</p>
+                </div>
+              </div>
+            </div>
+            <div class="governance-figure-1-layout-03" data-gm-step="">
+              <div class="governance-figure-1-text-15">PRIORITIZE &amp; ESTIMATE EFFORT</div>
+              <div class="governance-figure-1-overlay-04" data-gm-tip="">
+                <div class="governance-figure-1-overlay-05"></div>
+                <div class="governance-figure-1-text-02">STEP 04</div>
+                <div class="governance-figure-1-text-03">Prioritize &amp; Estimate Effort</div>
+                <p class="governance-figure-1-text-16">If a use-case makes it past the validation and value-estimation stage, then it needs to be prioritized against the current <strong class="governance-figure-1-box-01">backlog</strong> of use-cases — along with the effort of how long it will take to implement.</p>
+                <p class="governance-figure-1-text-04">The order of this sequence can vary. Sometimes it's important to know how much effort comes with a use-case in order to prioritize it; but sometimes a use-case is so critical that the effort estimation is purely required from an engineering / resource-planning perspective.</p>
+              </div>
+            </div>
+            <div class="governance-figure-1-layout-03" data-gm-step="">
+              <div class="governance-figure-1-text-13">ROADMAP DECISION</div>
+              <div class="governance-figure-1-overlay-06" data-gm-tip="">
+                <div class="governance-figure-1-overlay-07"></div>
+                <div class="governance-figure-1-text-02">STEP 05</div>
+                <div class="governance-figure-1-text-03">Roadmap Decision</div>
+                <p class="governance-figure-1-text-16">This is just the formal step of placing the use-case in the <strong class="governance-figure-1-box-01">roadmap</strong>, prioritized with an expected delivery date.</p>
+                <p class="governance-figure-1-text-04">It's also an opportunity to introduce the backlog / roadmap to leadership and have them review it — to gather input and feedback on what their priorities might be.</p>
+              </div>
+            </div>
+            <div class="governance-figure-1-layout-03" data-gm-step="">
+              <div class="governance-figure-1-text-17">DELIVERY MODEL</div>
+              <div class="governance-figure-1-overlay-08" data-gm-tip="">
+                <div class="governance-figure-1-overlay-07"></div>
+                <div class="governance-figure-1-text-02">STEP 06</div>
+                <div class="governance-figure-1-text-03">Delivery Model</div>
+                <p class="governance-figure-1-text-16">This is where the use-case graduates the intake process and moves onto <strong class="governance-figure-1-box-01">implementation</strong>.</p>
+                <p class="governance-figure-1-text-04">The reason I call this the delivery model is because delivery could be done by the internal platform team, the application owner, an external service provider, or a project team. The key thing is that it needs to be routed to someone — or to a process — for delivery.</p>
+              </div>
+            </div>
+          </div>
+          <div class="governance-figure-1-layout-04">
+            <div class="governance-figure-1-layout-05">
+              <div class="governance-figure-1-layout-06">
+                <div class="governance-figure-1-text-18">SERVICE OWNER</div>
+                <div class="governance-figure-1-text-18">IT MANAGER</div>
+                <div class="governance-figure-1-text-18">BUSINESS UNIT</div>
+              </div>
+            </div>
+            <div class="governance-figure-1-box-05">
+              <div class="governance-figure-1-overlay-09"></div>
+              <div class="governance-figure-1-overlay-10"></div>
+              <div class="governance-figure-1-overlay-11">
+                <div class="governance-figure-1-text-19">UCL</div>
+                <span class="governance-figure-1-overlay-12">USE-CASE LEAD<br>ONE OWNER, END TO END</span>
+              </div>
+              <div class="governance-figure-1-overlay-13"></div>
+            </div>
+            <div class="governance-figure-1-layout-07">
+              <div class="adoption-warning-line"></div>
+              <div class="governance-figure-1-surface-02"></div>
+              <div class="adoption-warning-line"></div>
+            </div>
+            <div class="governance-figure-1-layout-07">
+              <div class="adoption-warning-line"></div>
+              <div class="governance-figure-1-surface-03"></div>
+              <div class="adoption-warning-line"></div>
+            </div>
+            <div class="governance-figure-1-layout-07">
+              <div class="adoption-warning-line"></div>
+              <div class="governance-figure-1-surface-02"></div>
+              <div class="adoption-warning-line"></div>
+            </div>
+            <div class="governance-figure-1-box-05">
+              <div class="governance-figure-1-overlay-14"></div>
+              <div class="governance-figure-1-overlay-15"></div>
+              <div class="governance-figure-1-overlay-16">
+                <div class="governance-figure-1-text-20">PLATFORM TEAM</div>
+                <div class="governance-figure-1-text-20">VENDOR SERVICE</div>
+                <div class="governance-figure-1-text-20">PROJECT TEAM</div>
+              </div>
+            </div>
+          </div>
+          <div class="governance-figure-1-layout-08">
+            <span class="governance-figure-1-text-21">REQUESTS</span>
+            <span class="governance-figure-1-text-22">DELIVERY LEADS</span>
+          </div>
+          <div class="governance-figure-1-layout-09">
+            <span class="governance-figure-1-text-23"><span class="governance-figure-1-surface-04"></span>DECISION STAGE</span>
+            <span class="governance-figure-1-text-23"><span class="governance-figure-1-surface-05"></span>VALUE CHECKPOINT</span>
+            <span class="governance-figure-1-text-23"><span class="governance-figure-1-surface-06"></span>DOCUMENTED GATE</span>
+            <span class="governance-figure-1-text-23"><span class="governance-figure-1-box-06"></span>ONE LEAD CARRIES THE REQUEST</span>
+          </div>
+        </div>
+        </div>
+        <figcaption class="ai-figure-2-text-31">Every distinct request converges on one use-case lead, who carries it through the stages above.</figcaption>
+      </figure>
+
+      <p class="article-copy"><i><b>FYI:&nbsp;</b>Detailed reasoning available by hovering over the process steps.</i></p>
+      <p class="article-copy">First, <strong class="article-list-lead">value is estimated before effort is spent</strong>. A ballpark value estimate at intake is imprecise, but it forces the conversation about why the request exists and it creates the foundation of tracking the value of the use-case.</p>
+      <p class="article-copy">Second, <strong class="article-list-lead">the gates produce documented decisions:</strong>&nbsp;Proposal, prioritization, timing, complexity. Much of the value of the process is in what it stops. A declined use case that would have cost hours of engineering efforts with little to no return of value is resources saved.</p>
+      <p class="article-copy">This process is flexible enough to further integrate contributing roles or to add more nuanced steps in between depending on an organizations need.</p>
+
+      <h2 class="article-section-title" id="sec-3">What is missing: A service catalog for repeatable work</h2>
+      <p class="article-copy">Not every request should go through the use-case intake process. A predefined dashboard, a standard report, a templated communication campaign are <strong class="article-list-lead">repeatable, low-complexity</strong> tasks, and pushing them through that process would be pure overhead.</p>
+      <p class="article-copy">So the second part of the model is a service-request lane: a small catalog of predefined offerings, requested through a standard form and handled entirely by the platform team, with no gates.</p>
+
+      <figure class="article-figure-contained">
+        <div class="compact-figure-header">
+          <span class="figure-label">FIG. 02 · TWO LANES</span>
+
+        </div>
+        <div class="governance-figure-2-surface-01">
+        <div class="governance-figure-2-layout-01">
+          <div class="governance-figure-2-layout-02">
+            <div class="governance-figure-2-layout-03">
+              <span class="governance-figure-2-text-01">USE-CASE LANE</span>
+              <span class="governance-figure-2-text-02">UNIQUE · HIGH VALUE</span>
+            </div>
+            <div class="governance-figure-1-layout-02">
+            <div class="governance-figure-2-text-03">NEW USE CASE</div>
+            <div class="governance-figure-2-text-04">INTAKE PROCESS</div>
+            <div class="governance-figure-2-text-05">ROADMAP DECISION</div>
+            <div class="governance-figure-2-text-06">DELIVERY IN WEEKS</div>
+            </div>
+          </div>
+          <div class="governance-figure-2-layout-04">
+            <span class="governance-figure-2-text-07"><span class="accent-arrow">↓</span>PROVEN &amp; REPEATABLE USE CASES GRADUATE INTO THE CATALOG</span>
+          </div>
+          <div class="governance-figure-2-layout-02">
+            <div class="governance-figure-2-layout-03">
+              <span class="governance-figure-2-text-08">SERVICE LANE</span>
+              <span class="governance-figure-2-text-02">REPEATABLE · LOW COMPLEXITY</span>
+            </div>
+            <div class="governance-figure-1-layout-02">
+            <div class="governance-figure-2-text-03">STANDARD REQUEST</div>
+            <div class="governance-figure-2-text-09">CATALOG FORM</div>
+            <div class="governance-figure-2-text-09">PLATFORM TEAM</div>
+            <div class="governance-figure-2-text-06">DELIVERY IN DAYS</div>
+            </div>
+          </div>
+          <div class="governance-figure-2-layout-05">
+            <span class="governance-figure-1-text-23"><span class="governance-figure-2-surface-02"></span>VALUE CHECKPOINT</span>
+            <span class="governance-figure-1-text-23"><span class="governance-figure-2-surface-03"></span>DOCUMENTED GATE</span>
+            <span class="governance-figure-1-text-23"><span class="governance-figure-2-surface-04"></span>DELIVERY</span>
+          </div>
+        </div>
+        </div>
+        <figcaption class="ai-figure-2-text-31">Repeatable work skips the intake overhead; the intake process stays focused on unique, high-value use cases.</figcaption>
+      </figure>
+
+      <p class="article-copy">Building a service catalog does two things at once. The business gets fast, predictable turnaround, which makes the platform feel like a service rather than a project or a tool. And the intake process is protected from being flooded with small tasks, so it keeps its focus on high-value work.</p>
+      <p class="article-copy">The two lanes also feed each other: a use case that went through intake and proved repeatable can graduate into a catalog item. Over time, the catalog becomes a record of what the platform reliably does (well).</p>
+
+      <h2 class="article-section-title" id="sec-4">The artifacts that hold it together</h2>
+      <p class="article-copy">Services decay unless something holds them in place. The third part of the model is a combination of documents and people, that together form the service offering. I picture them as a house: the offering is the roof, the artifacts are the pillars, and IT and business objectives are the foundation everything must trace back to.</p>
+
+      <figure class="article-figure-contained">
+        <div class="compact-figure-header">
+          <span class="figure-label">FIG. 03 · THE GOVERNANCE HOUSE</span>
+          <span class="figure-source">HOVER OVER EACH ARTIFACT FOR DETAIL</span>
+        </div>
+        <div class="governance-figure-2-surface-01">
+        <div class="governance-figure-3-layout-01">
+          <div class="governance-figure-3-surface-01">
+            <span class="governance-figure-3-text-01">THE SERVICE OFFERING</span>
+            <span class="governance-figure-3-text-02">WHAT THE ORGANIZATION CAN COUNT ON</span>
+          </div>
+          <div class="governance-figure-3-layout-02">
+            <div class="governance-figure-3-text-03" data-gm-step="">
+              <span class="adoption-index">01</span>
+              <span class="governance-figure-3-text-04">ROADMAP</span>
+              <span class="governance-figure-3-text-05">WHAT COMES NEXT</span>
+              <span class="governance-figure-3-text-06">DOCUMENT</span>
+              <div class="governance-figure-3-overlay-01" data-gm-tip="">
+                <div class="governance-figure-3-overlay-02"></div>
+                <div class="governance-figure-3-layout-03"><span class="governance-figure-3-text-07">ARTIFACT 01</span><span class="governance-figure-3-text-08">DOCUMENT</span></div>
+                <div class="governance-figure-3-text-09">Roadmap</div>
+                <p class="governance-figure-1-text-04">Sets the high-level timeline for value cases. It provides a shared view of what comes next.</p>
+              </div>
+            </div>
+            <div class="governance-figure-3-text-03" data-gm-step="">
+              <span class="adoption-index">02</span>
+              <span class="governance-figure-3-text-04">PROGRAM TRACKER</span>
+              <span class="governance-figure-3-text-05">WHAT IS IN FLIGHT</span>
+              <span class="governance-figure-3-text-06">DOCUMENT</span>
+              <div class="governance-figure-3-overlay-01" data-gm-tip="">
+                <div class="governance-figure-3-overlay-02"></div>
+                <div class="governance-figure-3-layout-03"><span class="governance-figure-3-text-07">ARTIFACT 02</span><span class="governance-figure-3-text-08">DOCUMENT</span></div>
+                <div class="governance-figure-3-text-09">Program Tracker</div>
+                <p class="governance-figure-1-text-04">Tracks all ongoing activities and deliverables which enables quality control on delivery.</p>
+              </div>
+            </div>
+            <div class="governance-figure-3-text-03" data-gm-step="">
+              <span class="adoption-index">03</span>
+              <span class="governance-figure-3-text-04">GUIDELINES</span>
+              <span class="governance-figure-3-text-05">HOW WE DECIDE</span>
+              <span class="governance-figure-3-text-06">DOCUMENT</span>
+              <div class="governance-figure-3-overlay-01" data-gm-tip="">
+                <div class="governance-figure-3-overlay-02"></div>
+                <div class="governance-figure-3-layout-03"><span class="governance-figure-3-text-07">ARTIFACT 03</span><span class="governance-figure-3-text-08">DOCUMENT</span></div>
+                <div class="governance-figure-3-text-09">Guidelines</div>
+                <p class="governance-figure-1-text-04">The ruleset for how decisions are made or what the service <strong class="governance-figure-1-box-01">is</strong> and <strong class="governance-figure-1-box-01">isn't</strong>.</p>
+              </div>
+            </div>
+            <div class="governance-figure-3-text-03" data-gm-step="">
+              <span class="adoption-index">04</span>
+              <span class="governance-figure-3-text-04">SUCCESS PLAN</span>
+              <span class="governance-figure-3-text-05">WHAT MATTERS MOST</span>
+              <span class="governance-figure-3-text-06">DOCUMENT</span>
+              <div class="governance-figure-3-overlay-01" data-gm-tip="">
+                <div class="governance-figure-3-overlay-02"></div>
+                <div class="governance-figure-3-layout-03"><span class="governance-figure-3-text-07">ARTIFACT 04</span><span class="governance-figure-3-text-08">DOCUMENT</span></div>
+                <div class="governance-figure-3-text-09">Success Plan</div>
+                <p class="governance-figure-1-text-04">Defines the key success imperatives and points the team at high-value areas. Often aligned to the organizations business objectives.</p>
+              </div>
+            </div>
+            <div class="governance-figure-3-text-03" data-gm-step="">
+              <span class="adoption-index">05</span>
+              <span class="governance-figure-3-text-04">VALUE TRACKER</span>
+              <span class="governance-figure-3-text-05">WHAT IT WAS WORTH</span>
+              <span class="governance-figure-3-text-06">DOCUMENT</span>
+              <div class="governance-figure-3-overlay-01" data-gm-tip="">
+                <div class="governance-figure-3-overlay-02"></div>
+                <div class="governance-figure-3-layout-03"><span class="governance-figure-3-text-07">ARTIFACT 05</span><span class="governance-figure-3-text-08">DOCUMENT</span></div>
+                <div class="governance-figure-3-text-09">Value Tracker</div>
+                <p class="governance-figure-1-text-04">Records the value each delivered use case generated, against its intake estimate.</p>
+              </div>
+            </div>
+            <div class="governance-figure-3-text-10" data-gm-step="">
+              <span class="adoption-index">06</span>
+              <span class="governance-figure-3-text-11">GOVERNANCE BOARD</span>
+              <span class="governance-figure-3-text-05">WHO DECIDES</span>
+              <span class="governance-figure-3-text-06">PEOPLE</span>
+              <div class="governance-figure-3-overlay-01" data-gm-tip="">
+                <div class="governance-figure-3-overlay-02"></div>
+                <div class="governance-figure-3-layout-03"><span class="governance-figure-3-text-07">ARTIFACT 06</span><span class="governance-figure-3-text-08">PEOPLE</span></div>
+                <div class="governance-figure-3-text-09">Governance Board</div>
+                <p class="governance-figure-1-text-04">Makes the executive decisions and provides roadmap approvals, priorities, escalations. This should be shaped based on organizational need.</p>
+              </div>
+            </div>
+          </div>
+          <div class="governance-figure-3-layout-04">
+            <span class="governance-figure-3-text-12">↑</span>
+            <span class="governance-figure-3-text-12">↑</span>
+            <span class="governance-figure-3-text-12">↑</span>
+            <span class="governance-figure-3-text-12">↑</span>
+            <span class="governance-figure-3-text-12">↑</span>
+            <span class="governance-figure-3-text-12">↑</span>
+          </div>
+          <div class="governance-figure-3-surface-02">
+            <span class="governance-figure-3-text-13">FOUNDATION · IT &amp; BUSINESS OBJECTIVES</span>
+            <span class="governance-figure-3-text-14">OBJECTIVES FEED EVERY PILLAR ABOVE</span>
+          </div>
+          <div class="governance-figure-3-layout-05">
+            <span class="governance-figure-1-text-23"><span class="governance-figure-3-surface-03"></span>ARTIFACT · DOCUMENT</span>
+            <span class="governance-figure-1-text-23"><span class="governance-figure-1-surface-06"></span>ARTIFACT · PEOPLE</span>
+            <span class="governance-figure-1-text-23"><span class="governance-figure-3-surface-04"></span>SHARED OBJECTIVES</span>
+          </div>
+        </div>
+        </div>
+        <figcaption class="ai-figure-2-text-31">Six artifacts carry the service offering; every one of them must trace back to IT and business objectives.</figcaption>
+      </figure>
+
+      <p class="article-copy"><i><b>FYI: </b>Detailed explanation available by hovering over the elements..</i><br><br>The two elements that I believe to be critical are the value tracker and the board. The value tracker helps move the renewal conversation from cost to review of value. And the board provides the platform team with a mechanism to defend its priorities and decisions made.</p>
+
+
+      <h2 class="article-section-title" id="sec-5">My current reflection</h2>
+      <p class="article-copy">Although I initially designed this for one product, I think this methodology holds up well in any enterprise software scenario as it contains nothing product-specific. It applies especially for a product when its value is not self-evident from usage alone.</p>
+      <p class="article-copy">At least it helped me answer the question "we bought the capability, now what?".<br><br>As I'm writing this post I realize that it might be worth revisiting this specifically for AI.<br>I'll have a think about it...<br></p>
+
+
+
+
+
+
+
+
+
+    </article>
+
+    <div class="author-card">
+      <div class="author-card-inner">
+        <div class="author-monogram">KW</div>
+        <div class="author-details">
+          <span class="author-name">Kevin Wyss</span>
+          <span class="author-role">Senior Consultant at alpONE</span>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <footer class="article-footer">
+      <span class="copyright">© 2026 Kevin Wyss</span>
+
+    </footer>
+  </main>
+</div>
+</x-dc>
+</body>
+</html>
