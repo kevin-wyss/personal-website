@@ -41,14 +41,6 @@ next-env.d.ts
 /outputs/
 /work/
 
-# Original Claude Design export retained in the source zip
-/.thumbnail
-/Kevin Wyss Site.html
-/Kevin Wyss Site.dc.html
-/Kevin Wyss Article - AI Service.dc.html
-/Kevin Wyss Article - Governance Model.dc.html
-/support.js
-/gm-tooltips.js
-/screenshots/
-/uploads/
-/github-pages-site/
+# Archived source material and the superseded GitHub Pages checkout
+/archive/design-export/
+/archive/github-pages-site-legacy/

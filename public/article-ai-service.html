@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Turning AI into a service — Kevin Wyss</title>
 <meta name="description" content="Mapping an enterprise-software service model onto OpenAI's five AI value models to build an AI service.">
-<script src="/support.js"></script>
+<link rel="stylesheet" href="/sources/css/site.css">
+<script src="/sources/js/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -13,431 +14,420 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<style>
-html{scroll-behavior:smooth}
-body{margin:0;background:oklch(0.992 0.002 256);font-family:"Hanken Grotesk",system-ui,sans-serif}
-a{color:oklch(0.5 0.15 257);text-decoration:none}
-a:hover{color:oklch(0.44 0.135 258)}
-details.cv-collapse summary{list-style:none}
-details.cv-collapse summary::-webkit-details-marker{display:none}
-details.cv-collapse .cv-chevron{transition:transform .2s ease}
-details.cv-collapse[open] .cv-chevron{transform:rotate(90deg)}
-@media (prefers-reduced-motion:reduce){*{animation-duration:.01s !important;animation-delay:0s !important}}
-</style>
 </helmet>
 
-<div style="display:flex;background:oklch(0.992 0.002 256);min-height:100vh">
+<div class="site-shell">
 
-  <aside style="width:440px;flex:none;border-right:1px solid oklch(0.918 0.006 256);padding:48px 40px 40px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh;box-sizing:border-box;overflow-y:auto">
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="font:500 11px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:oklch(0.635 0.011 256)">Zug · Switzerland</div>
-      <a href="/" style="font:800 32px/1.1 'Hanken Grotesk',sans-serif;letter-spacing:-0.02em;color:oklch(0.175 0.016 262)" style-hover="color:oklch(0.5 0.15 257)">Kevin Wyss</a>
-      <div style="font:400 16px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258);text-wrap:pretty">Field notes from the messy middle of enterprise tech.</div>
+  <aside class="article-sidebar">
+    <div class="sidebar-identity">
+      <div class="section-kicker">Zug · Switzerland</div>
+      <a class="site-brand-link" href="/">Kevin Wyss</a>
+      <div class="site-introduction">Field notes from the messy middle of enterprise tech.</div>
     </div>
-    <details class="cv-collapse" style="display:flex;flex-direction:column">
-      <summary style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;cursor:pointer;padding-bottom:10px;border-bottom:2px solid oklch(0.235 0.015 260)">
-        <span style="display:flex;align-items:center;gap:8px">
-          <span class="cv-chevron" style="display:inline-block;font:400 9px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">▶</span>
-          <span style="font:500 11px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:oklch(0.5 0.15 257)">My career in a nutshell</span>
+    <details class="cv-collapse vertical-stack">
+      <summary class="career-toggle">
+        <span class="career-toggle-label">
+          <span class="cv-chevron career-chevron">▶</span>
+          <span class="section-kicker-accent">My career in a nutshell</span>
         </span>
-        <span style="font:400 11px/1 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">2014 → NOW</span>
+        <span class="career-range">2014 → NOW</span>
       </summary>
-      <div style="display:flex;flex-direction:column;margin-top:8px">
-        <div style="display:flex;flex-direction:column;gap:5px;padding:13px 0;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline">
-            <span style="font:600 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.5 0.15 257)">2023 →</span>
-            <span style="font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.5 0.15 257)">BAAR · CH</span>
+      <div class="article-career-list">
+        <div class="article-career-entry-current">
+          <div class="split-row">
+            <span class="article-career-year-current">2023 →</span>
+            <span class="article-career-location-current">BAAR · CH</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
-            <span style="display:inline-flex;align-items:center;gap:7px;font:700 15px/1.3 'Hanken Grotesk',sans-serif;letter-spacing:-0.011em;color:oklch(0.175 0.016 262)">alpONE<span style="width:5px;height:5px;background:oklch(0.56 0.15 256);border-radius:50%;flex:none;display:inline-block"></span></span>
-            <span style="font:600 12px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.235 0.015 260);text-align:right">Senior Cybersecurity &amp; Technology Consultant</span>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">alpONE<span class="status-dot"></span></span>
+            <span class="article-career-role">Senior Cybersecurity &amp; Technology Consultant</span>
           </div>
-          <span style="font:400 11.5px/1.5 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);text-wrap:pretty">Leading Cybersecurity &amp; AI programs in Enterprise and financial sector.</span>
+          <span class="article-career-summary">Leading Cybersecurity &amp; AI programs in Enterprise and financial sector.</span>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;padding:13px 0;border-top:1px solid oklch(0.918 0.006 256);">
-          <div style="display:flex;justify-content:space-between;align-items:baseline">
-            <span style="font:600 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.635 0.011 256)">2021 — 23</span>
-            <span style="font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.72 0.009 256)">LONDON · UK</span>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2021 — 23</span>
+            <span class="article-career-location">LONDON · UK</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
-            <span style="display:inline-flex;align-items:center;gap:7px;font:700 15px/1.3 'Hanken Grotesk',sans-serif;letter-spacing:-0.011em;color:oklch(0.175 0.016 262)">Nexthink</span>
-            <span style="font:600 12px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.235 0.015 260);text-align:right">Product Educator <span style="color:oklch(0.5 0.15 257)">→</span> Service Delivery Manager</span>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Nexthink</span>
+            <span class="article-career-role">Product Educator <span class="accent-arrow">→</span> Service Delivery Manager</span>
           </div>
-          <span style="font:400 11.5px/1.5 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);text-wrap:pretty">Built best-practice trainings for successful software adoption. Owned technical and value delivery of use-cases to enterprise customers.</span>
+          <span class="article-career-summary">Built best-practice trainings for successful software adoption. Owned technical and value delivery of use-cases to enterprise customers.</span>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;padding:13px 0;border-top:1px solid oklch(0.918 0.006 256);">
-          <div style="display:flex;justify-content:space-between;align-items:baseline">
-            <span style="font:600 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.635 0.011 256)">2019 — 20</span>
-            <span style="font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.72 0.009 256)">ZURICH · CH</span>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2019 — 20</span>
+            <span class="article-career-location">ZURICH · CH</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
-            <span style="display:inline-flex;align-items:center;gap:7px;font:700 15px/1.3 'Hanken Grotesk',sans-serif;letter-spacing:-0.011em;color:oklch(0.175 0.016 262)">aplus consulting</span>
-            <span style="font:600 12px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.235 0.015 260);text-align:right">IT Strategy Consultant</span>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">aplus consulting</span>
+            <span class="article-career-role">IT Strategy Consultant</span>
           </div>
-          <span style="font:400 11.5px/1.5 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);text-wrap:pretty">Helped build up a new enterprise IT organization.</span>
+          <span class="article-career-summary">Helped build up a new enterprise IT organization.</span>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;padding:13px 0;border-top:1px solid oklch(0.918 0.006 256);">
-          <div style="display:flex;justify-content:space-between;align-items:baseline">
-            <span style="font:600 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.635 0.011 256)">2018 — 19</span>
-            <span style="font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.72 0.009 256)">ZURICH · CH</span>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2018 — 19</span>
+            <span class="article-career-location">ZURICH · CH</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
-            <span style="display:inline-flex;align-items:center;gap:7px;font:700 15px/1.3 'Hanken Grotesk',sans-serif;letter-spacing:-0.011em;color:oklch(0.175 0.016 262)">Ontrex</span>
-            <span style="font:600 12px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.235 0.015 260);text-align:right">Solution Architect</span>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Ontrex</span>
+            <span class="article-career-role">Solution Architect</span>
           </div>
-          <span style="font:400 11.5px/1.5 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);text-wrap:pretty">Designed and deployed enterprise IT software during pre- and post-sales.</span>
+          <span class="article-career-summary">Designed and deployed enterprise IT software during pre- and post-sales.</span>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;padding:13px 0;border-top:1px solid oklch(0.918 0.006 256);">
-          <div style="display:flex;justify-content:space-between;align-items:baseline">
-            <span style="font:600 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.635 0.011 256)">2015 — 18</span>
-            <span style="font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.72 0.009 256)">BAAR · CH</span>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2015 — 18</span>
+            <span class="article-career-location">BAAR · CH</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
-            <span style="display:inline-flex;align-items:center;gap:7px;font:700 15px/1.3 'Hanken Grotesk',sans-serif;letter-spacing:-0.011em;color:oklch(0.175 0.016 262)">Glencore</span>
-            <span style="font:600 12px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.235 0.015 260);text-align:right">IT PMO &amp; Client Engineering</span>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Glencore</span>
+            <span class="article-career-role">IT PMO &amp; Client Engineering</span>
           </div>
-          <span style="font:400 11.5px/1.5 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);text-wrap:pretty">Delivered large enterprise IT projects for global rollout.</span>
+          <span class="article-career-summary">Delivered large enterprise IT projects for global rollout.</span>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;padding:13px 0;border-top:1px solid oklch(0.918 0.006 256);">
-          <div style="display:flex;justify-content:space-between;align-items:baseline">
-            <span style="font:600 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.635 0.011 256)">2014</span>
-            <span style="font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.72 0.009 256)">GOLDAU · CH</span>
+        <div class="article-career-entry">
+          <div class="split-row">
+            <span class="article-career-year">2014</span>
+            <span class="article-career-location">GOLDAU · CH</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
-            <span style="display:inline-flex;align-items:center;gap:7px;font:700 15px/1.3 'Hanken Grotesk',sans-serif;letter-spacing:-0.011em;color:oklch(0.175 0.016 262)">Garaventa</span>
-            <span style="font:600 12px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.235 0.015 260);text-align:right">IT Support Engineer</span>
+          <div class="article-career-role-row">
+            <span class="article-career-employer">Garaventa</span>
+            <span class="article-career-role">IT Support Engineer</span>
           </div>
-          <span style="font:400 11.5px/1.5 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);text-wrap:pretty">Learned the true meaning of being customer and user centric.</span>
+          <span class="article-career-summary">Learned the true meaning of being customer and user centric.</span>
         </div>
       </div>
     </details>
-    <div style="display:flex;flex-direction:column;gap:12px;padding-top:24px">
-      <span style="font:500 11px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:oklch(0.635 0.011 256)">Overview<br></span>
-      <nav style="display:flex;flex-direction:column;gap:8px">
-        <a href="#sec-1" style="font:400 13px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258)" style-hover="color:oklch(0.5 0.15 257)">OpenAI's view in short</a>
-        <a href="#sec-2" style="font:400 13px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258)" style-hover="color:oklch(0.5 0.15 257)">Where my service approach fits</a>
-        <a href="#sec-3" style="font:400 13px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258)" style-hover="color:oklch(0.5 0.15 257)">The right implementation technique</a>
-        <a href="#sec-4" style="font:400 13px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258)" style-hover="color:oklch(0.5 0.15 257)">Mapping the artifacts to an agent</a>
-        <a href="#sec-5" style="font:400 13px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258)" style-hover="color:oklch(0.5 0.15 257)">How the intake process changes</a>
-        <a href="#sec-6" style="font:400 13px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258)" style-hover="color:oklch(0.5 0.15 257)">My current reflection</a>
+    <div class="sidebar-overview">
+      <span class="section-kicker">Overview<br></span>
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-link" href="#sec-1">OpenAI's view in short</a>
+        <a class="sidebar-nav-link" href="#sec-2">Where my service approach fits</a>
+        <a class="sidebar-nav-link" href="#sec-3">The right implementation technique</a>
+        <a class="sidebar-nav-link" href="#sec-4">Mapping the artifacts to an agent</a>
+        <a class="sidebar-nav-link" href="#sec-5">How the intake process changes</a>
+        <a class="sidebar-nav-link" href="#sec-6">My current reflection</a>
       </nav>
     </div>
-    <div style="margin-top:auto;display:flex;flex-direction:column;gap:8px;border-top:1px solid oklch(0.918 0.006 256);padding-top:24px">
-      <a href="mailto:kevin@wyss.co" style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:oklch(0.53 0.012 258)" style-hover="color:oklch(0.5 0.15 257)"></a><a href="mailto:kevin@wyss.co" class="scp0" style="color: oklch(0.53 0.012 258); font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-size: 12px; line-height: 1.5; font-family: &quot;IBM Plex Mono&quot;, monospace;">kevin (at) wyssdom.ai</a>
-      <a href="https://linkedin.com/in/kevin-wh" style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:oklch(0.53 0.012 258)" style-hover="color:oklch(0.5 0.15 257)">/in/kevin-wh</a>
+    <div class="sidebar-contact">
+      <a class="contact-link" href="mailto:kevin@wyss.co">kevin (at) wyssdom.ai</a>
+      <a class="contact-link" href="https://linkedin.com/in/kevin-wh">/in/kevin-wh</a>
     </div>
   </aside>
 
-  <main id="top" style="flex:1;min-width:0" data-screen-label="Turning AI into a service article">
+  <main class="site-main" id="top" data-screen-label="Turning AI into a service article">
 
-    <div style="width:680px;max-width:calc(100% - 128px);margin:0 64px 0 max(64px, calc(50vw - 780px));box-sizing:border-box;padding:28px 0;border-bottom:1px solid oklch(0.918 0.006 256);display:flex;justify-content:space-between;align-items:baseline">
-      <div style="display:flex;gap:10px;align-items:baseline;font:400 12px/1 'IBM Plex Mono',monospace">
-        <a href="/#writing" style="color:oklch(0.53 0.012 258)" style-hover="color:oklch(0.5 0.15 257)">← All posts</a>
+    <div class="article-toolbar">
+      <div class="article-back-nav">
+        <a class="article-back-link" href="/#writing">← All posts</a>
       </div>
       
     </div>
 
-    <header style="width:680px;max-width:calc(100% - 128px);margin:0 64px 0 max(64px, calc(50vw - 780px));box-sizing:border-box;padding:64px 0 48px;border-bottom:1px solid oklch(0.918 0.006 256)">
-      <div style="display:flex;gap:14px;align-items:baseline;margin-bottom:22px">
-        <span style="padding:5px 11px;border:1px solid oklch(0.56 0.15 256);border-radius:999px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.5 0.15 257)">AI</span>
-        <span style="font:400 12px/1 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">Jul 2026 · 11 min read</span>
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="article-topic">AI</span>
+        <span class="article-date">Jul 2026 · 11 min read</span>
       </div>
-      <h1 style="margin:0 0 24px;font:800 52px/1.1 'Hanken Grotesk',sans-serif;letter-spacing:-0.02em;color:oklch(0.175 0.016 262);max-width:760px;text-wrap:pretty">Turning AI into a service</h1>
-      <p style="margin:0;font:400 19px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.43 0.013 258);max-width:640px;text-wrap:pretty">How to enhance OpenAIs value models with a use-case intake process to build an AI service.</p>
+      <h1 class="article-title">Turning AI into a service</h1>
+      <p class="article-deck">How to enhance OpenAIs value models with a use-case intake process to build an AI service.</p>
     </header>
 
-    <article style="width:680px;max-width:calc(100% - 128px);margin:0 64px 0 max(64px, calc(50vw - 780px));box-sizing:border-box;padding:56px 0 24px">
-      <aside style="margin:0 0 32px;background:oklch(0.965 0.018 256);border:1px solid oklch(0.872 0.007 256);border-left:3px solid oklch(0.56 0.15 256);border-radius:0 8px 8px 0;padding:18px 22px;display:flex;flex-direction:column;gap:8px">
-        <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.15 257)">A NOTE ABOUT THIS POST AND THE USE OF AI</span>
-        <p style="margin:0;font:400 15px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty"><i>This post was written by me and are my thoughts, there might be grammatical errors. <br>For me this is about reflection and sharing my views or a piece of knowledge that worked for me with others.<br><br>I use AI to build the visuals in this post based on slides or sketches I made.</i></p>
+    <article class="article-content">
+      <aside class="article-disclosure">
+        <span class="article-disclosure-label">A NOTE ABOUT THIS POST AND THE USE OF AI</span>
+        <p class="article-disclosure-copy"><i>This post was written by me and are my thoughts, there might be grammatical errors. <br>For me this is about reflection and sharing my views or a piece of knowledge that worked for me with others.<br><br>I use AI to build the visuals in this post based on slides or sketches I made.</i></p>
       </aside>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">In <a href="/writing/how-to-find-value-in-enterprise-software">my previous post</a>, I wrote about the challenge of finding value in enterprise software once the implementation is finished. The approach I used with customers was to stop treating the platform of choice as a tool and start treating it as a service.</p>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">In practice, that meant putting three things in place: an intake process for new use cases, a catalog for repeatable requests, and a small set of artifacts to make ownership, priorities and value visible.</p>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">I ended that post with a note that the same model might be worth revisiting for AI. While reading OpenAI's article on five AI value models, I felt like it was a useful structure to map my model against.<a href="#fn-1" style="font: 500 12px &quot;IBM Plex Mono&quot;, monospace;"><sup>1</sup></a></p>
+      <p class="article-copy">In <a href="/writing/how-to-find-value-in-enterprise-software">my previous post</a>, I wrote about the challenge of finding value in enterprise software once the implementation is finished. The approach I used with customers was to stop treating the platform of choice as a tool and start treating it as a service.</p>
+      <p class="article-copy">In practice, that meant putting three things in place: an intake process for new use cases, a catalog for repeatable requests, and a small set of artifacts to make ownership, priorities and value visible.</p>
+      <p class="article-copy">I ended that post with a note that the same model might be worth revisiting for AI. While reading OpenAI's article on five AI value models, I felt like it was a useful structure to map my model against.<a class="footnote-reference" href="#fn-1"><sup>1</sup></a></p>
 
-      <h2 id="sec-1" style="margin:48px 0 18px;font:700 28px/1.25 'Hanken Grotesk',sans-serif;letter-spacing:-0.015em;color:oklch(0.175 0.016 262);scroll-margin-top:24px">OpenAI's view in short</h2>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">OpenAI describes five value models that are emerging most clearly in the Enterprise setting. I do not read them as a strict ladder and my interpretation is that they can cross-pollinate. OpenAI even points out in their article that an organization may work across several at the same time.</p>
+      <h2 class="article-section-title" id="sec-1">OpenAI's view in short</h2>
+      <p class="article-copy">OpenAI describes five value models that are emerging most clearly in the Enterprise setting. I do not read them as a strict ladder and my interpretation is that they can cross-pollinate. OpenAI even points out in their article that an organization may work across several at the same time.</p>
       
 
-      <figure style="width:max(100%, min(1040px, calc(100vw - 560px)));margin:40px 0 40px calc((100% - max(100%, min(1040px, calc(100vw - 560px))))/2);padding:0;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:8px;overflow:visible">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 20px;border-bottom:1px dashed oklch(0.872 0.007 256)">
-          <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.635 0.011 256)">FIG. 01 · OPENAI'S FIVE AI VALUE MODELS</span>
-          <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.5 0.15 257)">SOURCE · OPENAI, 2026</span>
+      <figure class="article-figure-overflow">
+        <div class="figure-header">
+          <span class="figure-label">FIG. 01 · OPENAI'S FIVE AI VALUE MODELS</span>
+          <span class="figure-source">SOURCE · OPENAI, 2026</span>
         </div>
-        <div style="padding:22px 18px;background-image:radial-gradient(oklch(0.945 0.005 256) 1px, transparent 1px);background-size:26px 26px;display:flex;flex-direction:column;gap:14px">
-          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:0 2px 4px">
+        <div class="ai-figure-1-surface-01">
+          <div class="ai-figure-1-layout-01">
             
-            <span style="flex:none;font:500 10.5px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);margin-left:auto">HOVER A LAYER ▾</span>
+            <span class="ai-figure-1-text-01">HOVER A LAYER ▾</span>
           </div>
-          <div style="display:flex;flex-direction:column-reverse;gap:6px">
+          <div class="ai-figure-1-layout-02">
 
-            <div onMouseEnter="{{ enter5 }}" onMouseLeave="{{ leave }}" style="background:#fff;border:1px solid oklch(0.872 0.007 256);border-left:3px solid oklch(0.72 0.09 256);border-radius:6px;position:relative;transition:box-shadow .15s,border-color .15s" style-hover="border-color:oklch(0.72 0.09 256);box-shadow:0 2px 10px oklch(0.235 0.015 260/0.08)">
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:11px 14px;cursor:default">
-                <span style="flex:none;font:600 12px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);width:20px">05</span>
-                <span style="flex:none;font:600 13px/1.3 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);min-width:150px">Process re-engineering</span>
-                <span style="font:400 12.5px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);min-width:0;flex:1 1 auto">End-to-end workflows with agents</span>
+            <div class="ai-figure-1-surface-02" onMouseEnter="{{ enter5 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">05</span>
+                <span class="ai-figure-1-text-03">Process re-engineering</span>
+                <span class="ai-figure-1-text-04">End-to-end workflows with agents</span>
               </div>
               <sc-if value="{{ show5 }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;left:0;right:0;bottom:calc(100% + 7px);z-index:6;pointer-events:none;background:#fff;border:1px solid oklch(0.82 0.06 256);border-radius:8px;box-shadow:0 12px 30px oklch(0.235 0.015 260/0.16);padding:16px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
-                  <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:9px;padding-bottom:14px;border-bottom:1px solid oklch(0.918 0.006 256)"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px"><span style="flex:none;font:600 11px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">05</span><span style="font:700 16px/1.25 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262)">Process re-engineering</span></div><p style="margin:0;font:400 13px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">The slowest model to scale and often the most transformative. Agents orchestrate end-to-end workflows within and across functions. The upside is exponential, but only when the foundations are real: identity and access controls, clean permissions, observability at scale, exception handling and clear ownership. Re-engineering forces the organization to revisit what the process is for and where judgment belongs.</p></div><div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">WHAT TO MEASURE</span><ul style="margin:0;padding-left:15px;display:flex;flex-direction:column;gap:3px"><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">End-to-end cycle time</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Exception rate &amp; resolution time</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Compliance &amp; innovation output</li></ul></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">COMMON FAILURE MODE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Automating end-to-end before permissions, controls and accountability are mature.</p></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">LEADERSHIP MOVE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Pick one workflow; run a readiness assessment across identity, logging, exceptions and ownership.</p></div>
+                <div class="ai-figure-1-overlay-01">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">05</span><span class="ai-figure-1-text-06">Process re-engineering</span></div><p class="ai-figure-1-text-07">The slowest model to scale and often the most transformative. Agents orchestrate end-to-end workflows within and across functions. The upside is exponential, but only when the foundations are real: identity and access controls, clean permissions, observability at scale, exception handling and clear ownership. Re-engineering forces the organization to revisit what the process is for and where judgment belongs.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">End-to-end cycle time</li><li class="ai-figure-1-text-09">Exception rate &amp; resolution time</li><li class="ai-figure-1-text-09">Compliance &amp; innovation output</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Automating end-to-end before permissions, controls and accountability are mature.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Pick one workflow; run a readiness assessment across identity, logging, exceptions and ownership.</p></div>
                 </div>
               </sc-if>
             </div>
 
-            <div onMouseEnter="{{ enter4 }}" onMouseLeave="{{ leave }}" style="background:#fff;border:1px solid oklch(0.872 0.007 256);border-left:3px solid oklch(0.66 0.11 256);border-radius:6px;position:relative;transition:box-shadow .15s,border-color .15s" style-hover="border-color:oklch(0.66 0.11 256);box-shadow:0 2px 10px oklch(0.235 0.015 260/0.08)">
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:11px 14px;cursor:default">
-                <span style="flex:none;font:600 12px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);width:20px">04</span>
-                <span style="flex:none;font:600 13px/1.3 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);min-width:150px">Systems &amp; dependencies</span>
-                <span style="font:400 12.5px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);min-width:0;flex:1 1 auto">Controlled change across connected artifacts</span>
+            <div class="ai-figure-1-surface-03" onMouseEnter="{{ enter4 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">04</span>
+                <span class="ai-figure-1-text-03">Systems &amp; dependencies</span>
+                <span class="ai-figure-1-text-04">Controlled change across connected artifacts</span>
               </div>
               <sc-if value="{{ show4 }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:6;pointer-events:none;background:#fff;border:1px solid oklch(0.82 0.06 256);border-radius:8px;box-shadow:0 12px 30px oklch(0.235 0.015 260/0.16);padding:16px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
-                  <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:9px;padding-bottom:14px;border-bottom:1px solid oklch(0.918 0.006 256)"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px"><span style="flex:none;font:600 11px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">04</span><span style="font:700 16px/1.25 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262)">Systems &amp; dependency management</span></div><p style="margin:0;font:400 13px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Coding agents are the clearest example, but the larger model is safe upgrades across interconnected systems of work: SOPs, contracts, policies, customer narratives and onboarding flows that must stay consistent as they evolve. This is less about generation than control: faster updates, fewer downstream breakages, stronger compliance and better auditability.</p></div><div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">WHAT TO MEASURE</span><ul style="margin:0;padding-left:15px;display:flex;flex-direction:column;gap:3px"><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Time to safe change &amp; conflict resolution</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Audit readiness &amp; traceability</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Downstream consistency</li></ul></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">COMMON FAILURE MODE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Scaling generation faster than governance, creating systemic debt.</p></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">LEADERSHIP MOVE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Start with one high-dependency domain; map the dependency graph and approval path first.</p></div>
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">04</span><span class="ai-figure-1-text-06">Systems &amp; dependency management</span></div><p class="ai-figure-1-text-07">Coding agents are the clearest example, but the larger model is safe upgrades across interconnected systems of work: SOPs, contracts, policies, customer narratives and onboarding flows that must stay consistent as they evolve. This is less about generation than control: faster updates, fewer downstream breakages, stronger compliance and better auditability.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Time to safe change &amp; conflict resolution</li><li class="ai-figure-1-text-09">Audit readiness &amp; traceability</li><li class="ai-figure-1-text-09">Downstream consistency</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Scaling generation faster than governance, creating systemic debt.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Start with one high-dependency domain; map the dependency graph and approval path first.</p></div>
                 </div>
               </sc-if>
             </div>
 
-            <div onMouseEnter="{{ enter3 }}" onMouseLeave="{{ leave }}" style="background:#fff;border:1px solid oklch(0.872 0.007 256);border-left:3px solid oklch(0.60 0.13 256);border-radius:6px;position:relative;transition:box-shadow .15s,border-color .15s" style-hover="border-color:oklch(0.60 0.13 256);box-shadow:0 2px 10px oklch(0.235 0.015 260/0.08)">
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:11px 14px;cursor:default">
-                <span style="flex:none;font:600 12px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);width:20px">03</span>
-                <span style="flex:none;font:600 13px/1.3 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);min-width:150px">Expert capability</span>
-                <span style="font:400 12.5px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);min-width:0;flex:1 1 auto">Faster and broader expert work</span>
+            <div class="ai-figure-1-surface-04" onMouseEnter="{{ enter3 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">03</span>
+                <span class="ai-figure-1-text-03">Expert capability</span>
+                <span class="ai-figure-1-text-04">Faster and broader expert work</span>
               </div>
               <sc-if value="{{ show3 }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:6;pointer-events:none;background:#fff;border:1px solid oklch(0.82 0.06 256);border-radius:8px;box-shadow:0 12px 30px oklch(0.235 0.015 260/0.16);padding:16px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
-                  <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:9px;padding-bottom:14px;border-bottom:1px solid oklch(0.918 0.006 256)"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px"><span style="flex:none;font:600 11px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">03</span><span style="font:700 16px/1.25 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262)">Expert capability</span></div><p style="margin:0;font:400 13px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Inserts specialized AI into research, creative and domain-heavy work. Near term it compresses expert bottlenecks; over time it changes the operating model, as teams shift from producing first drafts to directing, reviewing and integrating high-quality outputs generated in real time. The value is in expanding what the team can examine, test or produce.</p></div><div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">WHAT TO MEASURE</span><ul style="margin:0;padding-left:15px;display:flex;flex-direction:column;gap:3px"><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Cycle-time on expert bottlenecks</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Quality lift: reviewer scores, rework</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Expanded scope of work examined</li></ul></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">COMMON FAILURE MODE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Treating it as a demo rather than embedding it in a real, accountable workflow.</p></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">LEADERSHIP MOVE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Choose one bottleneck; agree what evidence turns a concept into a building block.</p></div>
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">03</span><span class="ai-figure-1-text-06">Expert capability</span></div><p class="ai-figure-1-text-07">Inserts specialized AI into research, creative and domain-heavy work. Near term it compresses expert bottlenecks; over time it changes the operating model, as teams shift from producing first drafts to directing, reviewing and integrating high-quality outputs generated in real time. The value is in expanding what the team can examine, test or produce.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Cycle-time on expert bottlenecks</li><li class="ai-figure-1-text-09">Quality lift: reviewer scores, rework</li><li class="ai-figure-1-text-09">Expanded scope of work examined</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Treating it as a demo rather than embedding it in a real, accountable workflow.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Choose one bottleneck; agree what evidence turns a concept into a building block.</p></div>
                 </div>
               </sc-if>
             </div>
 
-            <div onMouseEnter="{{ enter2 }}" onMouseLeave="{{ leave }}" style="background:#fff;border:1px solid oklch(0.872 0.007 256);border-left:3px solid oklch(0.54 0.15 257);border-radius:6px;position:relative;transition:box-shadow .15s,border-color .15s" style-hover="border-color:oklch(0.54 0.15 257);box-shadow:0 2px 10px oklch(0.235 0.015 260/0.08)">
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:11px 14px;cursor:default">
-                <span style="flex:none;font:600 12px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);width:20px">02</span>
-                <span style="flex:none;font:600 13px/1.3 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);min-width:150px">AI-native distribution</span>
-                <span style="font:400 12.5px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);min-width:0;flex:1 1 auto">Trust at moments of customer intent</span>
+            <div class="ai-figure-1-surface-05" onMouseEnter="{{ enter2 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">02</span>
+                <span class="ai-figure-1-text-03">AI-native distribution</span>
+                <span class="ai-figure-1-text-04">Trust at moments of customer intent</span>
               </div>
               <sc-if value="{{ show2 }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:6;pointer-events:none;background:#fff;border:1px solid oklch(0.82 0.06 256);border-radius:8px;box-shadow:0 12px 30px oklch(0.235 0.015 260/0.16);padding:16px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
-                  <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:9px;padding-bottom:14px;border-bottom:1px solid oklch(0.918 0.006 256)"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px"><span style="flex:none;font:600 11px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">02</span><span style="font:700 16px/1.25 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262)">AI-native distribution</span></div><p style="margin:0;font:400 13px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">AI is changing how customers discover, evaluate and choose products and services. In AI-native channels, conversion increasingly happens inside a conversation, shifting the growth question from reach to trust and presence at moments of intent. The winners will be the most useful, credible and well-timed when a decision is being made.</p></div><div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">WHAT TO MEASURE</span><ul style="margin:0;padding-left:15px;display:flex;flex-direction:column;gap:3px"><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Qualified intent &amp; iterations to commit</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Conversion quality: retention, upsell, LTV</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Trust signals: return, referral</li></ul></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">COMMON FAILURE MODE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Running it like a legacy demand funnel that chases volume over relevance and durable trust.</p></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">LEADERSHIP MOVE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Pick one surface and define conversion quality before scaling spend.</p></div>
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">02</span><span class="ai-figure-1-text-06">AI-native distribution</span></div><p class="ai-figure-1-text-07">AI is changing how customers discover, evaluate and choose products and services. In AI-native channels, conversion increasingly happens inside a conversation, shifting the growth question from reach to trust and presence at moments of intent. The winners will be the most useful, credible and well-timed when a decision is being made.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Qualified intent &amp; iterations to commit</li><li class="ai-figure-1-text-09">Conversion quality: retention, upsell, LTV</li><li class="ai-figure-1-text-09">Trust signals: return, referral</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">Running it like a legacy demand funnel that chases volume over relevance and durable trust.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Pick one surface and define conversion quality before scaling spend.</p></div>
                 </div>
               </sc-if>
             </div>
 
-            <div onMouseEnter="{{ enter1 }}" onMouseLeave="{{ leave }}" style="background:#fff;border:1px solid oklch(0.872 0.007 256);border-left:4px solid oklch(0.48 0.16 258);border-radius:6px;position:relative;transition:box-shadow .15s,border-color .15s" style-hover="border-color:oklch(0.48 0.16 258);box-shadow:0 2px 10px oklch(0.235 0.015 260/0.08)">
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:11px 14px;cursor:default">
-                <span style="flex:none;font:600 12px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);width:20px">01</span>
-                <span style="flex:none;font:600 13px/1.3 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);min-width:150px">Workforce empowerment</span>
-                <span style="font:400 12.5px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);min-width:0;flex:1 1 auto">Fluency and reusable workflows</span>
-                <span style="flex:none;margin-left:auto;padding:3px 8px;background:oklch(0.965 0.018 256);border-radius:999px;font:500 8.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.5 0.15 257)">FOUNDATION</span>
+            <div class="ai-figure-1-surface-06" onMouseEnter="{{ enter1 }}" onMouseLeave="{{ leave }}">
+              <div class="ai-figure-1-layout-03">
+                <span class="ai-figure-1-text-02">01</span>
+                <span class="ai-figure-1-text-03">Workforce empowerment</span>
+                <span class="ai-figure-1-text-04">Fluency and reusable workflows</span>
+                <span class="ai-figure-1-text-12">FOUNDATION</span>
               </div>
               <sc-if value="{{ show1 }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:6;pointer-events:none;background:#fff;border:1px solid oklch(0.82 0.06 256);border-radius:8px;box-shadow:0 12px 30px oklch(0.235 0.015 260/0.16);padding:16px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
-                  <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:9px;padding-bottom:14px;border-bottom:1px solid oklch(0.918 0.006 256)"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px"><span style="flex:none;font:600 11px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">01</span><span style="font:700 16px/1.25 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262)">Workforce empowerment</span></div><p style="margin:0;font:400 13px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">The fastest value model to activate. It spreads practical AI capability across the workforce, creating near-term productivity gains while building the fluency required for deeper transformation. The larger benefit is organizational readiness. HR can enable, Legal can govern, Finance can fund, and teams can collaborate with a shared understanding of where AI works and how to use it safely.</p></div><div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">WHAT TO MEASURE</span><ul style="margin:0;padding-left:15px;display:flex;flex-direction:column;gap:3px"><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Repeated use by role &amp; proficiency</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Reusable prompts, workflows &amp; assets</li><li style="font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)">Cross-functional enablement</li></ul></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">COMMON FAILURE MODE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">A two-tier workforce, where power users advance while everyone else stalls.</p></div>
-                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.635 0.011 256)">LEADERSHIP MOVE</span><p style="margin:0;font:400 13px/1.6 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Build a champions network and starter workflows that make best practice relatable.</p></div>
+                <div class="ai-figure-1-overlay-02">
+                  <div class="ai-figure-1-layout-04"><div class="ai-figure-1-layout-05"><span class="ai-figure-1-text-05">01</span><span class="ai-figure-1-text-06">Workforce empowerment</span></div><p class="ai-figure-1-text-07">The fastest value model to activate. It spreads practical AI capability across the workforce, creating near-term productivity gains while building the fluency required for deeper transformation. The larger benefit is organizational readiness. HR can enable, Legal can govern, Finance can fund, and teams can collaborate with a shared understanding of where AI works and how to use it safely.</p></div><div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-08">WHAT TO MEASURE</span><ul class="ai-figure-1-layout-07"><li class="ai-figure-1-text-09">Repeated use by role &amp; proficiency</li><li class="ai-figure-1-text-09">Reusable prompts, workflows &amp; assets</li><li class="ai-figure-1-text-09">Cross-functional enablement</li></ul></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">COMMON FAILURE MODE</span><p class="ai-figure-1-text-11">A two-tier workforce, where power users advance while everyone else stalls.</p></div>
+                  <div class="ai-figure-1-layout-06"><span class="ai-figure-1-text-10">LEADERSHIP MOVE</span><p class="ai-figure-1-text-11">Build a champions network and starter workflows that make best practice relatable.</p></div>
                 </div>
               </sc-if>
             </div>
 
           </div>
-          <div style="padding:11px 14px;background:oklch(0.985 0.002 256);border:1px dashed oklch(0.872 0.007 256);border-radius:6px;text-align:center;font:500 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.03em;color:oklch(0.53 0.012 258)">CAPABILITIES CAN COMPOUND ACROSS THE PORTFOLIO</div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;justify-items:center;margin:1px 0"><span style="font:700 18px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">↓</span><span style="font:700 18px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">↓</span><span style="font:700 18px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">↓</span></div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-            <div style="padding:9px 12px;background:oklch(0.965 0.018 256);border:1px solid oklch(0.785 0.105 256);border-radius:5px;text-align:center;font:500 10px/1.4 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">TRUST</div>
-            <div style="padding:9px 12px;background:oklch(0.965 0.018 256);border:1px solid oklch(0.785 0.105 256);border-radius:5px;text-align:center;font:500 10px/1.4 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">VALUE</div>
-            <div style="padding:9px 12px;background:oklch(0.965 0.018 256);border:1px solid oklch(0.785 0.105 256);border-radius:5px;text-align:center;font:500 10px/1.4 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">SCALE</div>
+          <div class="ai-figure-1-text-13">CAPABILITIES CAN COMPOUND ACROSS THE PORTFOLIO</div>
+          <div class="ai-figure-1-layout-08"><span class="ai-figure-1-text-14">↓</span><span class="ai-figure-1-text-14">↓</span><span class="ai-figure-1-text-14">↓</span></div>
+          <div class="ai-figure-1-layout-09">
+            <div class="ai-figure-1-text-15">TRUST</div>
+            <div class="ai-figure-1-text-15">VALUE</div>
+            <div class="ai-figure-1-text-15">SCALE</div>
           </div>
           
         </div>
         
       </figure>
 
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">OpenAI groups the practical adoption path into three broader phases: build trust, capture value, then scale with potential to reconsider the operating model.</p>
+      <p class="article-copy">OpenAI groups the practical adoption path into three broader phases: build trust, capture value, then scale with potential to reconsider the operating model.</p>
 
-      <h2 id="sec-2" style="margin:48px 0 18px;font:700 28px/1.25 'Hanken Grotesk',sans-serif;letter-spacing:-0.015em;color:oklch(0.175 0.016 262);scroll-margin-top:24px">Where my service approach fits</h2>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">The five value models describe where an organization may create value with AI. My service approach is more concerned with how a team receives demand, decides what to work on and turns a capability into something the organization can generate value from.</p>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">I therefore see it as a practical structure that enables the OpenAI value models rather than an alternative to it. The governance model runs as one connected process, and all of it stays in play whichever value model a piece of demand serves. The table below shows where that process adds the most to each value model.</p>
+      <h2 class="article-section-title" id="sec-2">Where my service approach fits</h2>
+      <p class="article-copy">The five value models describe where an organization may create value with AI. My service approach is more concerned with how a team receives demand, decides what to work on and turns a capability into something the organization can generate value from.</p>
+      <p class="article-copy">I therefore see it as a practical structure that enables the OpenAI value models rather than an alternative to it. The governance model runs as one connected process, and all of it stays in play whichever value model a piece of demand serves. The table below shows where that process adds the most to each value model.</p>
 
-      <div style="margin:32px 0;border:1px solid oklch(0.872 0.007 256);border-radius:8px;overflow:hidden;background:#fff">
-        <div style="display:grid;grid-template-columns:200px 1fr;background:oklch(0.985 0.002 256);border-bottom:1px solid oklch(0.872 0.007 256)">
-          <span style="padding:11px 16px;font:500 10px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.635 0.011 256);border-right:1px solid oklch(0.918 0.006 256)">OpenAI value model</span>
-          <span style="padding:11px 16px;font:500 10px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.635 0.011 256)">How the governance model enhances delivery</span>
+      <div class="comparison-table">
+        <div class="comparison-table-header">
+          <span class="comparison-heading-primary">OpenAI value model</span>
+          <span class="comparison-heading-secondary">How the governance model enhances delivery</span>
         </div>
-        <div style="display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:15px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)"><span style="display:block;margin-bottom:5px;font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">VM1</span>Workforce empowerment</span>
-          <span style="padding:15px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">A small service catalog gives employees useful starting points. Guidelines, named owners and a governance board make acceptable use clearer and give people somewhere to take questions. The intake process also gives power users a route for sharing new workflows with the wider organization.</span>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM1</span>Workforce empowerment</span>
+          <span class="comparison-copy">A small service catalog gives employees useful starting points. Guidelines, named owners and a governance board make acceptable use clearer and give people somewhere to take questions. The intake process also gives power users a route for sharing new workflows with the wider organization.</span>
         </div>
-        <div style="display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:15px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)"><span style="display:block;margin-bottom:5px;font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">VM2</span>AI-native distribution</span>
-          <span style="padding:15px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Intake and value tracking can help decide which customer-facing experiences are worth developing. Because my original model was designed for an internal platform, this would also require product management, customer research and measures such as conversion quality.</span>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM2</span>AI-native distribution</span>
+          <span class="comparison-copy">Intake and value tracking can help decide which customer-facing experiences are worth developing. Because my original model was designed for an internal platform, this would also require product management, customer research and measures such as conversion quality.</span>
         </div>
-        <div style="display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:15px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)"><span style="display:block;margin-bottom:5px;font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">VM3</span>Expert capability</span>
-          <span style="padding:15px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Domain-heavy work leans hardest on the use-case lane: a clear owner, expert review and an agreed definition of good. The success plan and value tracker can capture cycle-time, quality and the scope of work made possible.</span>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM3</span>Expert capability</span>
+          <span class="comparison-copy">Domain-heavy work leans hardest on the use-case lane: a clear owner, expert review and an agreed definition of good. The success plan and value tracker can capture cycle-time, quality and the scope of work made possible.</span>
         </div>
-        <div style="display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:15px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)"><span style="display:block;margin-bottom:5px;font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">VM4</span>Systems &amp; dependency mgmt</span>
-          <span style="padding:15px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">The roadmap, program tracker, guidelines and governance board provide part of the control structure. A dependency map, versioning, approval evidence and a clearer record of downstream changes would extend it.</span>
+        <div class="comparison-row">
+          <span class="comparison-label"><span class="comparison-code">VM4</span>Systems &amp; dependency mgmt</span>
+          <span class="comparison-copy">The roadmap, program tracker, guidelines and governance board provide part of the control structure. A dependency map, versioning, approval evidence and a clearer record of downstream changes would extend it.</span>
         </div>
-        <div style="display:grid;grid-template-columns:200px 1fr">
-          <span style="padding:15px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)"><span style="display:block;margin-bottom:5px;font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.5 0.15 257)">VM5</span>Process re-engineering</span>
-          <span style="padding:15px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Here the whole process pays off as a lifecycle: deciding which workflows should become agents, proving that they work, and operating the successful ones as managed services with clear ownership and exception handling.</span>
+        <div class="comparison-row-last">
+          <span class="comparison-label"><span class="comparison-code">VM5</span>Process re-engineering</span>
+          <span class="comparison-copy">Here the whole process pays off as a lifecycle: deciding which workflows should become agents, proving that they work, and operating the successful ones as managed services with clear ownership and exception handling.</span>
         </div>
       </div>
 
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Put against OpenAI's three adoption phases, the same logic holds: the whole process runs throughout, with the emphasis shifting. The model I propose could also be implemented on a per team basis to keep value-case processing and delivery as lean as possible.</p>
+      <p class="article-copy">Put against OpenAI's three adoption phases, the same logic holds: the whole process runs throughout, with the emphasis shifting. The model I propose could also be implemented on a per team basis to keep value-case processing and delivery as lean as possible.</p>
 
-      <h2 id="sec-3" style="margin:48px 0 18px;font:700 28px/1.25 'Hanken Grotesk',sans-serif;letter-spacing:-0.015em;color:oklch(0.175 0.016 262);scroll-margin-top:24px">What is the right AI implementation technique?</h2>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">My original model separated demand into two lanes. The service lane handled predefined, low-complexity requests. The use-case lane handled work that was unique, less certain and potentially more valuable.</p>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">For AI, I would keep that split but change the intake a bit. The core assessment becomes: what is the right implementation technique? In practice there are four escalating options:</p>
-      <ul style="margin:0 0 24px;padding-left:22px;display:flex;flex-direction:column;gap:12px">
-        <li style="font:400 17px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)"><strong style="color:oklch(0.175 0.016 262)">A project with prompting:</strong> curated context and well-structured prompts for one role's repeated task. The fastest option, owned by the person doing the work.</li>
-        <li style="font:400 17px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)"><strong style="color: oklch(0.175 0.016 262);">A skill:</strong> that same expertise packaged with instructions, examples and resources so anyone can invoke it the same way. A good skill can become a shared asset.</li>
-        <li style="font:400 17px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)"><strong style="color: oklch(0.175 0.016 262);">A workflow:</strong> a defined sequence of steps with AI at fixed points. Software orchestrates the path instead of a model making a decision.</li>
-        <li style="font:400 17px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)"><strong style="color: oklch(0.175 0.016 262);">An agent:</strong> the model runs the workflow or decides which workflow to run. It plans, uses tools and handles exceptions with guardrails set up.</li>
+      <h2 class="article-section-title" id="sec-3">What is the right AI implementation technique?</h2>
+      <p class="article-copy">My original model separated demand into two lanes. The service lane handled predefined, low-complexity requests. The use-case lane handled work that was unique, less certain and potentially more valuable.</p>
+      <p class="article-copy">For AI, I would keep that split but change the intake a bit. The core assessment becomes: what is the right implementation technique? In practice there are four escalating options:</p>
+      <ul class="article-list">
+        <li class="article-list-item"><strong class="article-list-lead">A project with prompting:</strong> curated context and well-structured prompts for one role's repeated task. The fastest option, owned by the person doing the work.</li>
+        <li class="article-list-item"><strong class="article-list-lead">A skill:</strong> that same expertise packaged with instructions, examples and resources so anyone can invoke it the same way. A good skill can become a shared asset.</li>
+        <li class="article-list-item"><strong class="article-list-lead">A workflow:</strong> a defined sequence of steps with AI at fixed points. Software orchestrates the path instead of a model making a decision.</li>
+        <li class="article-list-item"><strong class="article-list-lead">An agent:</strong> the model runs the workflow or decides which workflow to run. It plans, uses tools and handles exceptions with guardrails set up.</li>
       </ul>
       
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">The assessment then routes demand through the two lanes of my original model:</p>
-      <ul style="margin:0 0 24px;padding-left:22px;display:flex;flex-direction:column;gap:12px">
-        <li style="font:400 17px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)"><strong style="color:oklch(0.175 0.016 262)">Service lane:</strong> prompting projects, skills and existing AI capabilities. Repeatable requests with a known outcome, configured and delivered in days.</li>
-        <li style="font:400 17px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260)"><strong style="color:oklch(0.175 0.016 262)">Use-case lane:</strong> workflow and agent candidates — work with ambiguity, judgment or several systems involved, taken through a value and risk gate, a pilot and evaluation before a roadmap decision.</li>
+      <p class="article-copy">The assessment then routes demand through the two lanes of my original model:</p>
+      <ul class="article-list">
+        <li class="article-list-item"><strong class="article-list-lead">Service lane:</strong> prompting projects, skills and existing AI capabilities. Repeatable requests with a known outcome, configured and delivered in days.</li>
+        <li class="article-list-item"><strong class="article-list-lead">Use-case lane:</strong> workflow and agent candidates — work with ambiguity, judgment or several systems involved, taken through a value and risk gate, a pilot and evaluation before a roadmap decision.</li>
       </ul>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">A proven use case graduates into the service catalog with whatever implementation technique was utilised: a skill others can invoke, a managed workflow, or a managed agent service with an owner, a defined scope, expected service levels and a known route for exceptions.</p>
+      <p class="article-copy">A proven use case graduates into the service catalog with whatever implementation technique was utilised: a skill others can invoke, a managed workflow, or a managed agent service with an owner, a defined scope, expected service levels and a known route for exceptions.</p>
 
-      <figure style="width:max(100%, min(1040px, calc(100vw - 560px)));margin:40px 0 40px calc((100% - max(100%, min(1040px, calc(100vw - 560px))))/2);padding:0;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:8px;overflow:hidden">
-        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px;padding:12px 18px;border-bottom:1px dashed oklch(0.872 0.007 256)">
-          <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.635 0.011 256)">FIG. 02 · CHOOSING THE IMPLEMENTATION TECHNIQUE</span>
-          <span style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px"><span style="display:flex;align-items:center;gap:6px;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.43 0.013 258);white-space:nowrap"><span style="flex:none;width:8px;height:8px;box-sizing:border-box;background:#fff;border:1px dashed oklch(0.5 0.15 257);border-radius:2px"></span>VM = OPENAI VALUE MODEL</span><span style="display:flex;align-items:center;gap:6px;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.5 0.15 257);white-space:nowrap"><span style="flex:none;width:8px;height:8px;background:oklch(0.5 0.15 257);border-radius:2px"></span>NEW AI ELEMENTS</span></span>
+      <figure class="article-figure">
+        <div class="ai-figure-2-layout-01">
+          <span class="figure-label">FIG. 02 · CHOOSING THE IMPLEMENTATION TECHNIQUE</span>
+          <span class="ai-figure-2-layout-02"><span class="ai-figure-2-text-01"><span class="ai-figure-2-surface-01"></span>VM = OPENAI VALUE MODEL</span><span class="ai-figure-2-text-02"><span class="ai-figure-2-surface-02"></span>NEW AI ELEMENTS</span></span>
         </div>
-        <div style="padding:26px 18px 22px;background-image:radial-gradient(oklch(0.945 0.005 256) 1px, transparent 1px);background-size:26px 26px;overflow-x:auto"><div style="min-width:660px;display:flex;flex-direction:column">
-          <div style="display:flex;justify-content:center"><div style="padding:10px 16px;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:5px;font:500 11.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:0.05em;color:oklch(0.43 0.013 258)">NEW REQUEST OR IDEA</div></div>
-          <div style="display:flex;justify-content:center"><div style="width:1px;height:14px;background:oklch(0.75 0.01 256)"></div></div>
-          <div style="position:relative;background:oklch(1 0 0 / 0.55);border:1px dashed oklch(0.685 0.13 256);border-radius:6px;padding:11px 12px 12px;display:flex;flex-direction:column;gap:9px">
-            <span style="text-align:center;font:600 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.5 0.15 257)">STEP 1 · MAP IT AGAINST ONE OF OPENAI'S FIVE VALUE MODELS</span>
-            <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px"><div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;background:#fff;border:1px dashed oklch(0.785 0.105 256);border-radius:5px;text-align:center;min-width:0"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">VM1</span><span style="font:500 10.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:0.03em;color:oklch(0.43 0.013 258)">WORKFORCE EMPOWERMENT</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;background:#fff;border:1px dashed oklch(0.785 0.105 256);border-radius:5px;text-align:center;min-width:0"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">VM2</span><span style="font:500 10.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:0.03em;color:oklch(0.43 0.013 258)">AI-NATIVE DISTRIBUTION</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;background:#fff;border:1px dashed oklch(0.785 0.105 256);border-radius:5px;text-align:center;min-width:0"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">VM3</span><span style="font:500 10.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:0.03em;color:oklch(0.43 0.013 258)">EXPERT CAPABILITY</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;background:#fff;border:1px dashed oklch(0.785 0.105 256);border-radius:5px;text-align:center;min-width:0"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">VM4</span><span style="font:500 10.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:0.03em;color:oklch(0.43 0.013 258)">SYSTEMS &amp; DEPENDENCY MGMT</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;background:#fff;border:1px dashed oklch(0.785 0.105 256);border-radius:5px;text-align:center;min-width:0"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">VM5</span><span style="font:500 10.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:0.03em;color:oklch(0.43 0.013 258)">PROCESS RE-ENGINEERING</span></div></div>
-            <span style="text-align:center;font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.53 0.012 258)">DASHED LINES SHOW THE IMPLEMENTATION TECHNIQUES EACH VALUE MODEL TYPICALLY LEADS TO</span>
+        <div class="ai-figure-2-surface-03"><div class="ai-figure-2-layout-03">
+          <div class="ai-figure-2-layout-04"><div class="ai-figure-2-text-03">NEW REQUEST OR IDEA</div></div>
+          <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-04"></div></div>
+          <div class="ai-figure-2-surface-05">
+            <span class="ai-figure-2-text-04">STEP 1 · MAP IT AGAINST ONE OF OPENAI'S FIVE VALUE MODELS</span>
+            <div class="ai-figure-2-layout-05"><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM1</span><span class="ai-figure-2-text-07">WORKFORCE EMPOWERMENT</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM2</span><span class="ai-figure-2-text-07">AI-NATIVE DISTRIBUTION</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM3</span><span class="ai-figure-2-text-07">EXPERT CAPABILITY</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM4</span><span class="ai-figure-2-text-07">SYSTEMS &amp; DEPENDENCY MGMT</span></div><div class="ai-figure-2-text-05"><span class="ai-figure-2-text-06">VM5</span><span class="ai-figure-2-text-07">PROCESS RE-ENGINEERING</span></div></div>
+            <span class="ai-figure-2-text-08">DASHED LINES SHOW THE IMPLEMENTATION TECHNIQUES EACH VALUE MODEL TYPICALLY LEADS TO</span>
           </div>
-          <svg viewBox="0 0 1000 134" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:calc(100% - 26px);margin:-38px 13px 0;height:134px"><path d="M100,0 L100,38 C100,72 125,64 125,90 L125,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M100,0 L100,38 C100,72 375,64 375,90 L375,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M300,0 L300,38 C300,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M300,0 L300,38 C300,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 375,64 375,90 L375,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M700,0 L700,38 C700,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M700,0 L700,38 C700,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M900,0 L900,38 C900,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M900,0 L900,38 C900,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path></svg>
-          <div style="margin-top:-40px;position:relative;padding:14px 14px 12px;background:oklch(0.965 0.018 256 / 0.55);border:1.5px solid oklch(0.685 0.13 256);border-radius:6px;display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-              <div style="display:flex;align-items:center;gap:7px"><span style="flex:none;width:8px;height:8px;background:oklch(0.5 0.15 257);border-radius:2px"></span><span style="font:600 12px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.5 0.15 257)">STEP 2 · WHAT IS THE RIGHT IMPLEMENTATION TECHNIQUE?</span></div>
-              <span style="font:400 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.06em;color:oklch(0.53 0.012 258)">LIGHTEST → HEAVIEST</span>
+          <svg class="ai-figure-2-layout-06" viewBox="0 0 1000 134" preserveAspectRatio="none" aria-hidden="true"><path d="M100,0 L100,38 C100,72 125,64 125,90 L125,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M100,0 L100,38 C100,72 375,64 375,90 L375,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M300,0 L300,38 C300,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M300,0 L300,38 C300,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 375,64 375,90 L375,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M500,0 L500,38 C500,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M700,0 L700,38 C700,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M700,0 L700,38 C700,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M900,0 L900,38 C900,72 625,64 625,90 L625,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M900,0 L900,38 C900,72 875,64 875,90 L875,134" fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path></svg>
+          <div class="ai-figure-2-surface-06">
+            <div class="ai-figure-2-layout-07">
+              <div class="ai-figure-2-layout-08"><span class="ai-figure-2-surface-02"></span><span class="ai-figure-2-text-09">STEP 2 · WHAT IS THE RIGHT IMPLEMENTATION TECHNIQUE?</span></div>
+              <span class="ai-figure-2-text-10">LIGHTEST → HEAVIEST</span>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px"><div style="display:flex;flex-direction:column;gap:4px;padding:9px 9px 8px;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:5px"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">01</span><span style="font:600 11px/1.35 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.32 0.014 260)">PROMPTING PROJECT</span><span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">CURATED CONTEXT FOR ONE ROLE'S REPEATED TASK</span></div><div style="display:flex;flex-direction:column;gap:4px;padding:9px 9px 8px;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:5px"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">02</span><span style="font:600 11px/1.35 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.32 0.014 260)">SKILL</span><span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">PACKAGED EXPERTISE ANYONE CAN INVOKE</span></div><div style="display:flex;flex-direction:column;gap:4px;padding:9px 9px 8px;background:#fff;border:1px solid oklch(0.785 0.105 256);border-radius:5px"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">03</span><span style="font:600 11px/1.35 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.32 0.014 260)">WORKFLOW</span><span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">FIXED STEPS, AI AT SET POINTS</span></div><div style="display:flex;flex-direction:column;gap:4px;padding:9px 9px 8px;background:#fff;border:1.5px solid oklch(0.5 0.15 257);border-radius:5px"><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)">04</span><span style="display:flex;align-items:center;gap:5px;font:600 11px/1.35 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.5 0.15 257)"><span style="flex:none;width:7px;height:7px;background:oklch(0.5 0.15 257);border-radius:2px"></span>AGENT</span><span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.53 0.012 258)">MODEL PLANS, ACTS &amp; HANDLES EXCEPTIONS</span></div></div>
-            <span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.53 0.012 258);text-align:right">AGENT ONLY WHEN: NUANCED DECISIONS · HARD-TO-MAINTAIN RULES · UNSTRUCTURED INFORMATION</span>
+            <div class="ai-figure-2-layout-09"><div class="ai-figure-2-surface-07"><span class="ai-figure-2-text-11">01</span><span class="ai-figure-2-text-12">PROMPTING PROJECT</span><span class="ai-figure-2-text-13">CURATED CONTEXT FOR ONE ROLE'S REPEATED TASK</span></div><div class="ai-figure-2-surface-07"><span class="ai-figure-2-text-11">02</span><span class="ai-figure-2-text-12">SKILL</span><span class="ai-figure-2-text-13">PACKAGED EXPERTISE ANYONE CAN INVOKE</span></div><div class="ai-figure-2-surface-08"><span class="ai-figure-2-text-11">03</span><span class="ai-figure-2-text-12">WORKFLOW</span><span class="ai-figure-2-text-13">FIXED STEPS, AI AT SET POINTS</span></div><div class="ai-figure-2-surface-09"><span class="ai-figure-2-text-06">04</span><span class="ai-figure-2-text-14"><span class="ai-figure-2-surface-10"></span>AGENT</span><span class="ai-figure-2-text-15">MODEL PLANS, ACTS &amp; HANDLES EXCEPTIONS</span></div></div>
+            <span class="ai-figure-2-text-16">AGENT ONLY WHEN: NUANCED DECISIONS · HARD-TO-MAINTAIN RULES · UNSTRUCTURED INFORMATION</span>
           </div>
-          <div style="position:relative;margin-top:-40px">
-            <svg viewBox="0 0 1000 96" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:calc(100% - 26px);margin:0 13px;height:96px"><path d="M125,0 L125,44 C125,74 250,66 250,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M375,0 L375,44 C375,74 250,66 250,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M625,0 L625,44 C625,74 750,66 750,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M875,0 L875,44 C875,74 750,66 750,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path></svg>
-            <span style="position:absolute;left:50%;top:70%;transform:translate(-50%,-50%);padding:5px 12px;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:999px;font:600 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.635 0.011 256);white-space:nowrap">STEP 3 · ROUTE INTO A LANE</span>
+          <div class="ai-figure-2-box-01">
+            <svg class="ai-figure-2-layout-10" viewBox="0 0 1000 96" preserveAspectRatio="none" aria-hidden="true"><path d="M125,0 L125,44 C125,74 250,66 250,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M375,0 L375,44 C375,74 250,66 250,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M625,0 L625,44 C625,74 750,66 750,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path><path d="M875,0 L875,44 C875,74 750,66 750,96 " fill="none" stroke="oklch(0.685 0.13 256)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"></path></svg>
+            <span class="ai-figure-2-overlay-01">STEP 3 · ROUTE INTO A LANE</span>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch">
-            <div style="position:relative;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:6px;padding:20px 13px 13px;display:flex;flex-direction:column">
-              <span style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:4px 10px;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:999px;font:600 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.09em;color:oklch(0.43 0.013 258);white-space:nowrap">01 + 02</span>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;margin-bottom:12px">
-                <span style="display:flex;align-items:center;gap:6px"><span style="font:600 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.32 0.014 260)">SERVICE LANE</span></span>
-                <span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">REPEATABLE · PREDICTABLE · KNOWN OUTCOME</span>
+          <div class="ai-figure-2-layout-11">
+            <div class="ai-figure-2-surface-11">
+              <span class="ai-figure-2-overlay-02">01 + 02</span>
+              <div class="ai-figure-2-text-17">
+                <span class="ai-figure-2-layout-12"><span class="ai-figure-2-text-18">SERVICE LANE</span></span>
+                <span class="ai-figure-2-text-13">REPEATABLE · PREDICTABLE · KNOWN OUTCOME</span>
               </div>
-              <span style="padding:7px 11px;text-align:center;background:oklch(0.985 0.002 256);border:1px solid oklch(0.872 0.007 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260)">STANDARD REQUEST</span>
-              <span style="padding:4px 6px 0;text-align:center;font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">PROMPTING PROJECTS · SKILLS · EXISTING AI CAPABILITIES</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.75 0.01 256)"></div></div>
-              <span style="padding:7px 11px;text-align:center;background:oklch(0.985 0.002 256);border:1px solid oklch(0.872 0.007 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260)">CATALOG FORM</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.75 0.01 256)"></div></div>
-              <span style="padding:7px 11px;text-align:center;background:oklch(0.985 0.002 256);border:1px solid oklch(0.872 0.007 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260)">PLATFORM TEAM</span>
-              <span style="padding:4px 6px 0;text-align:center;font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">HANDLED ENTIRELY BY THE TEAM · NO GATES</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.75 0.01 256)"></div></div>
-              <span style="padding:8px 11px;text-align:center;background:#fff;border:1.5px solid oklch(0.43 0.013 258);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260)">DELIVERY</span>
-              <span style="margin-top:auto;padding-top:12px;text-align:center;font:400 10.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:0.04em;color:oklch(0.635 0.011 256)">THE LIGHTEST TECHNIQUE THAT WORKS</span>
+              <span class="ai-figure-2-text-19">STANDARD REQUEST</span>
+              <span class="ai-figure-2-text-20">PROMPTING PROJECTS · SKILLS · EXISTING AI CAPABILITIES</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-12"></div></div>
+              <span class="ai-figure-2-text-19">CATALOG FORM</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-12"></div></div>
+              <span class="ai-figure-2-text-19">PLATFORM TEAM</span>
+              <span class="ai-figure-2-text-20">HANDLED ENTIRELY BY THE TEAM · NO GATES</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-12"></div></div>
+              <span class="ai-figure-2-text-21">DELIVERY</span>
+              <span class="ai-figure-2-text-22">THE LIGHTEST TECHNIQUE THAT WORKS</span>
             </div>
-            <div style="position:relative;background:oklch(0.965 0.018 256);border:1px solid oklch(0.685 0.13 256);border-radius:6px;padding:20px 13px 13px;display:flex;flex-direction:column">
-              <span style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:4px 10px;background:oklch(0.5 0.15 257);border-radius:999px;font:600 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.09em;color:#fff;white-space:nowrap">03 + 04</span>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;margin-bottom:12px">
-                <span style="display:flex;align-items:center;gap:6px"><span style="font:600 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.5 0.15 257)">USE-CASE LANE</span></span>
-                <span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:oklch(0.53 0.012 258)">JUDGMENT · EXCEPTIONS · UNSTRUCTURED INFO</span>
+            <div class="ai-figure-2-surface-13">
+              <span class="ai-figure-2-overlay-03">03 + 04</span>
+              <div class="ai-figure-2-text-17">
+                <span class="ai-figure-2-layout-12"><span class="ai-figure-2-text-23">USE-CASE LANE</span></span>
+                <span class="ai-figure-2-text-15">JUDGMENT · EXCEPTIONS · UNSTRUCTURED INFO</span>
               </div>
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:7px 11px;background:#fff;border:1px solid oklch(0.785 0.105 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260);text-align:center">COLLECT &amp; ROUTE</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.685 0.13 256)"></div></div>
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:7px 11px;background:#fff;border:1px solid oklch(0.785 0.105 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260);text-align:center">VALIDATE &amp; ESTIMATE VALUE + RISK</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.685 0.13 256)"></div></div>
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:7px 11px;background:#fff;border:1px solid oklch(0.785 0.105 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260);text-align:center">DECISION TO CONTINUE</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.685 0.13 256)"></div></div>
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:7px 11px;background:#fff;border:1px solid oklch(0.785 0.105 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260);text-align:center">PRIORITIZE &amp; ESTIMATE EFFORT</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.685 0.13 256)"></div></div>
+              <span class="ai-figure-2-text-24">COLLECT &amp; ROUTE</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-24">VALIDATE &amp; ESTIMATE VALUE + RISK</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-24">DECISION TO CONTINUE</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-24">PRIORITIZE &amp; ESTIMATE EFFORT</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
               
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.685 0.13 256)"></div></div>
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;padding:8px 11px;background:#fff;border:1.5px solid oklch(0.5 0.15 257);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);text-align:center"><span style="flex: 0 0 auto; width: 7px; height: 7px; background: oklch(0.5 0.15 257); border-radius: 2px;"></span>EVALS</span>
-              <div style="display:flex;align-items:center;justify-content:center;gap:12px;padding:5px 0"><span style="font:500 10.5px/1.6 'IBM Plex Mono',monospace;color:oklch(0.43 0.013 258)">PASS ↓</span><span style="font:400 10.5px/1.6 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">FAIL ↺ STOP IS A VALID OUTCOME</span></div>
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:7px 11px;background:#fff;border:1px solid oklch(0.785 0.105 256);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.32 0.014 260);text-align:center">ROADMAP DECISION</span>
-              <div style="display:flex;justify-content:center"><div style="width:1px;height:10px;background:oklch(0.685 0.13 256)"></div></div>
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;padding:8px 11px;background:#fff;border:1.5px solid oklch(0.5 0.15 257);border-radius:5px;font:500 11px/1.4 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257);text-align:center">DELIVERY</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-25"><span class="ai-figure-2-surface-15"></span>EVALS</span>
+              <div class="ai-figure-2-layout-13"><span class="ai-figure-2-text-26">PASS ↓</span><span class="ai-figure-2-text-27">FAIL ↺ STOP IS A VALID OUTCOME</span></div>
+              <span class="ai-figure-2-text-24">ROADMAP DECISION</span>
+              <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-14"></div></div>
+              <span class="ai-figure-2-text-25">DELIVERY</span>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr">
-            <div style="height:16px;width:50%;margin-left:50%;border-left:1px solid oklch(0.75 0.01 256);border-bottom:1px solid oklch(0.75 0.01 256)"></div>
-            <div style="height:16px;width:50%;border-right:1px solid oklch(0.75 0.01 256);border-bottom:1px solid oklch(0.75 0.01 256)"></div>
+          <div class="ai-figure-2-layout-14">
+            <div class="ai-figure-2-box-02"></div>
+            <div class="ai-figure-2-box-03"></div>
           </div>
-          <div style="display:flex;justify-content:center"><div style="width:1px;height:12px;background:oklch(0.75 0.01 256)"></div></div>
-          <div style="display:flex;justify-content:center;padding:0 0 8px"><span style="font:600 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.635 0.011 256)">STEP 4 · GRADUATE INTO THE CATALOG</span></div>
-          <div style="display:flex;justify-content:center">
-            <div style="max-width:560px;width:100%;background:#fff;border:1px solid oklch(0.872 0.007 256);border-radius:6px;padding:13px 16px;display:flex;flex-direction:column;align-items:center;gap:9px">
-              <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px"><span style="font:600 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:0.08em;color:oklch(0.32 0.014 260)">SERVICE CATALOG</span></span>
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px"><span style="padding:6px 10px;background:oklch(0.985 0.002 256);border:1px solid oklch(0.872 0.007 256);border-radius:5px;font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:oklch(0.43 0.013 258)">PROMPT PROJECTS</span><span style="padding:6px 10px;background:oklch(0.985 0.002 256);border:1px solid oklch(0.872 0.007 256);border-radius:5px;font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:oklch(0.43 0.013 258)">SKILLS</span><span style="padding:6px 10px;background:oklch(0.985 0.002 256);border:1px solid oklch(0.872 0.007 256);border-radius:5px;font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:oklch(0.43 0.013 258)">WORKFLOWS</span><span style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:oklch(0.965 0.018 256);border:1.5px solid oklch(0.5 0.15 257);border-radius:5px;font:500 10.5px/1.4 'IBM Plex Mono',monospace;color:oklch(0.5 0.15 257)"><span style="flex:none;width:7px;height:7px;background:oklch(0.5 0.15 257);border-radius:2px"></span>MANAGED AGENT SERVICE</span></div>
+          <div class="ai-figure-2-layout-04"><div class="ai-figure-2-surface-16"></div></div>
+          <div class="ai-figure-2-layout-15"><span class="ai-figure-2-text-28">STEP 4 · GRADUATE INTO THE CATALOG</span></div>
+          <div class="ai-figure-2-layout-04">
+            <div class="ai-figure-2-surface-17">
+              <span class="ai-figure-2-layout-16"><span class="ai-figure-2-text-18">SERVICE CATALOG</span></span>
+              <div class="ai-figure-2-layout-17"><span class="ai-figure-2-text-29">PROMPT PROJECTS</span><span class="ai-figure-2-text-29">SKILLS</span><span class="ai-figure-2-text-29">WORKFLOWS</span><span class="ai-figure-2-text-30"><span class="ai-figure-2-surface-10"></span>MANAGED AGENT SERVICE</span></div>
               
             </div>
           </div>
         </div></div>
-        <figcaption style="padding:12px 18px 14px;border-top:1px solid oklch(0.918 0.006 256);font:400 13px/1.55 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258)">A new request or idea is first mapped against one of OpenAI's five value models (VM1–VM5). The value model sets the value, risk and ownership expectations that steer the choice of implementation technique (01–04), and the technique routes the work into the service lane or the use-case lane. Both lanes ultimately feed and maintain a service catalog of an AI service(s) and capabilities.</figcaption>
+        <figcaption class="ai-figure-2-text-31">A new request or idea is first mapped against one of OpenAI's five value models (VM1–VM5). The value model sets the value, risk and ownership expectations that steer the choice of implementation technique (01–04), and the technique routes the work into the service lane or the use-case lane. Both lanes ultimately feed and maintain a service catalog of an AI service(s) and capabilities.</figcaption>
       </figure>
 
-      <h2 id="sec-4" style="margin:48px 0 18px;font:700 28px/1.25 'Hanken Grotesk',sans-serif;letter-spacing:-0.015em;color:oklch(0.175 0.016 262);scroll-margin-top:24px">Mapping the service artifacts to an AI service</h2>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Most of my original service artifacts have a natural place in the structure of this AI service design but I think a few potential modifications or adjustments should be made:</p>
+      <h2 class="article-section-title" id="sec-4">Mapping the service artifacts to an AI service</h2>
+      <p class="article-copy">Most of my original service artifacts have a natural place in the structure of this AI service design but I think a few potential modifications or adjustments should be made:</p>
 
-      <div style="margin:32px 0;border:1px solid oklch(0.872 0.007 256);border-radius:8px;overflow:hidden;background:#fff">
-        <div style="display:grid;grid-template-columns:190px 1fr;background:oklch(0.985 0.002 256);border-bottom:1px solid oklch(0.872 0.007 256)">
-          <span style="padding:11px 16px;font:500 10px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.635 0.011 256);border-right:1px solid oklch(0.918 0.006 256)">Original component</span>
-          <span style="padding:11px 16px;font:500 10px/1.3 'IBM Plex Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;color:oklch(0.635 0.011 256)">IDEAL ROLE WHEN BUILDING AN AI SERVICE</span>
+      <div class="comparison-table">
+        <div class="comparison-table-header-accent">
+          <span class="comparison-heading-primary">Original component</span>
+          <span class="comparison-heading-secondary">IDEAL ROLE WHEN BUILDING AN AI SERVICE</span>
         </div>
-        <div style="display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:14px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)">Use-case lead</span>
-          <span style="padding:14px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Becomes the accountable service owner and owns the workflow from initial request through production.</span>
+        <div class="artifact-row">
+          <span class="artifact-name">Use-case lead</span>
+          <span class="artifact-description">Becomes the accountable service owner and owns the workflow from initial request through production.</span>
         </div>
-        <div style="display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:14px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)">Guidelines</span>
-          <span style="padding:14px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Provide the source for AI instructions, policies, decision rules and expected handling of edge cases.</span>
+        <div class="artifact-row">
+          <span class="artifact-name">Guidelines</span>
+          <span class="artifact-description">Provide the source for AI instructions, policies, decision rules and expected handling of edge cases.</span>
         </div>
-        <div style="display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:14px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)">Service catalog</span>
-          <span style="padding:14px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Lists the services that are proven and repeatable. Underneath it, the tools used by AI (especially agents) also need standardized definitions and owners.</span>
+        <div class="artifact-row">
+          <span class="artifact-name">Service catalog</span>
+          <span class="artifact-description">Lists the services that are proven and repeatable. Underneath it, the tools used by AI (especially agents) also need standardized definitions and owners.</span>
         </div>
-        <div style="display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:14px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)">Success plan</span>
-          <span style="padding:14px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Defines the expected outcome, acceptance criteria and the evidence required from an organizational perspective.</span>
+        <div class="artifact-row">
+          <span class="artifact-name">Success plan</span>
+          <span class="artifact-description">Defines the expected outcome, acceptance criteria and the evidence required from an organizational perspective.</span>
         </div>
-        <div style="display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:14px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)">Value tracker</span>
-          <span style="padding:14px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Tracks business value together with quality, errors, exception rates, human escalations and rework.</span>
+        <div class="artifact-row">
+          <span class="artifact-name">Value tracker</span>
+          <span class="artifact-description">Tracks business value together with quality, errors, exception rates, human escalations and rework.</span>
         </div>
-        <div style="display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid oklch(0.918 0.006 256)">
-          <span style="padding:14px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)">Roadmap &amp; program tracker</span>
-          <span style="padding:14px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Manage capability releases, dependencies, integrations and planned improvements.</span>
+        <div class="artifact-row">
+          <span class="artifact-name">Roadmap &amp; program tracker</span>
+          <span class="artifact-description">Manage capability releases, dependencies, integrations and planned improvements.</span>
         </div>
-        <div style="display:grid;grid-template-columns:190px 1fr">
-          <span style="padding:14px 16px;font:600 14px/1.45 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262);border-right:1px solid oklch(0.918 0.006 256)">Governance board</span>
-          <span style="padding:14px 16px;font:400 14px/1.65 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Decides which use-cases to implement, data and actions an agent may access, which actions require approval and when work must return to a person.</span>
+        <div class="artifact-row-last">
+          <span class="artifact-name">Governance board</span>
+          <span class="artifact-description">Decides which use-cases to implement, data and actions an agent may access, which actions require approval and when work must return to a person.</span>
         </div>
       </div>
 
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">Three key additions are critical from some form of governance:</p>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty"><strong style="color: oklch(0.175 0.016 262);">First, evaluations and observability.</strong> The team needs a definition of good and a way to test against it.</p>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty"><strong style="color: oklch(0.175 0.016 262);">Second, permissions at tool and action level.</strong> Reading a policy document is not the same risk as changing a customer record or approving a payment. The governance board has to take accountability here and make the teams lives easier.</p>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty"><strong style="color: oklch(0.175 0.016 262);">Third, human intervention as part of the service design.</strong> By implementing these processes we can dictate early on what the guardrails should look like for human intervention.</p>
+      <p class="article-copy">Three key additions are critical from some form of governance:</p>
+      <p class="article-copy"><strong class="article-list-lead">First, evaluations and observability.</strong> The team needs a definition of good and a way to test against it.</p>
+      <p class="article-copy"><strong class="article-list-lead">Second, permissions at tool and action level.</strong> Reading a policy document is not the same risk as changing a customer record or approving a payment. The governance board has to take accountability here and make the teams lives easier.</p>
+      <p class="article-copy"><strong class="article-list-lead">Third, human intervention as part of the service design.</strong> By implementing these processes we can dictate early on what the guardrails should look like for human intervention.</p>
 
       
 
@@ -446,26 +436,26 @@ details.cv-collapse[open] .cv-chevron{transform:rotate(90deg)}
       
       
 
-      <h2 id="sec-6" style="margin:48px 0 18px;font:700 28px/1.25 'Hanken Grotesk',sans-serif;letter-spacing:-0.015em;color:oklch(0.175 0.016 262);scroll-margin-top:24px">Final thoughts</h2>
-      <p style="margin:0 0 24px;font:400 17px/1.75 'Hanken Grotesk',sans-serif;color:oklch(0.32 0.014 260);text-wrap:pretty">I have been working with a combination of these models for my current role for a while now and I think it works pretty well. I don't think it would hold up perfectly in an enterprise setting but I think with a few modifications it could work.<br><br>The idea I like the most within this post is the prospect of implementing this on a per team level. Imagine you placed an Applied AI Engineer into a business with these models as guardrails. Could have the potential for high impact, no? Curious to hear your thoughts. Feel free to send me direct messages or an email.</p>
+      <h2 class="article-section-title" id="sec-6">Final thoughts</h2>
+      <p class="article-copy">I have been working with a combination of these models for my current role for a while now and I think it works pretty well. I don't think it would hold up perfectly in an enterprise setting but I think with a few modifications it could work.<br><br>The idea I like the most within this post is the prospect of implementing this on a per team level. Imagine you placed an Applied AI Engineer into a business with these models as guardrails. Could have the potential for high impact, no? Curious to hear your thoughts. Feel free to send me direct messages or an email.</p>
       
       
       
       
 
-      <div style="margin:44px 0 0;border-top:1px solid oklch(0.918 0.006 256);padding-top:18px;display:flex;flex-direction:column;gap:10px">
-        <h2 style="margin:0 0 4px;font:600 13px/1 'IBM Plex Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.43 0.013 258)">Sources</h2>
-        <p id="fn-1" style="margin:0;font:400 13px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);scroll-margin-top:24px"><span style="font:500 11px 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">1.</span> OpenAI, <em>The five AI value models driving business reinvention</em>. <a href="https://openai.com/index/the-five-ai-value-models-driving-business-reinvention/">Read the article</a></p>
-        <p id="fn-2" style="margin:0;font:400 13px/1.7 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258);scroll-margin-top:24px"><span style="font:500 11px 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">2.</span> OpenAI, <em>A practical guide to building agents</em>. <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">Read the guide</a></p>
+      <div class="sources-block">
+        <h2 class="sources-title">Sources</h2>
+        <p class="source-entry" id="fn-1"><span class="source-number">1.</span> OpenAI, <em>The five AI value models driving business reinvention</em>. <a href="https://openai.com/index/the-five-ai-value-models-driving-business-reinvention/">Read the article</a></p>
+        <p class="source-entry" id="fn-2"><span class="source-number">2.</span> OpenAI, <em>A practical guide to building agents</em>. <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">Read the guide</a></p>
       </div>
     </article>
 
-    <div style="width:680px;max-width:calc(100% - 128px);margin:32px 64px 0 max(64px, calc(50vw - 780px));box-sizing:border-box;border-top:1px solid oklch(0.918 0.006 256);padding:28px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:16px">
-        <div style="width:44px;height:44px;border-radius:999px;background:oklch(0.965 0.018 256);border:1.5px solid oklch(0.56 0.15 256);display:flex;align-items:center;justify-content:center;font:700 14px/1 'Hanken Grotesk',sans-serif;color:oklch(0.5 0.15 257);flex:none">KW</div>
-        <div style="display:flex;flex-direction:column;gap:2px">
-          <span style="font:600 14px/1.3 'Hanken Grotesk',sans-serif;color:oklch(0.175 0.016 262)">Kevin Wyss</span>
-          <span style="font:400 12px/1.4 'Hanken Grotesk',sans-serif;color:oklch(0.53 0.012 258)">Senior Consultant at alpONE</span>
+    <div class="author-card">
+      <div class="author-card-inner">
+        <div class="author-monogram">KW</div>
+        <div class="author-details">
+          <span class="author-name">Kevin Wyss</span>
+          <span class="author-role">Senior Consultant at alpONE</span>
         </div>
       </div>
       
@@ -473,8 +463,8 @@ details.cv-collapse[open] .cv-chevron{transform:rotate(90deg)}
 
     
 
-    <footer style="width:680px;max-width:calc(100% - 128px);margin:0 64px 0 max(64px, calc(50vw - 780px));box-sizing:border-box;border-top:1px solid oklch(0.918 0.006 256);padding:24px 0 32px;display:flex;justify-content:space-between;align-items:baseline">
-      <span style="font:400 12px/1.4 'IBM Plex Mono',monospace;color:oklch(0.635 0.011 256)">© 2026 Kevin Wyss</span>
+    <footer class="article-footer">
+      <span class="copyright">© 2026 Kevin Wyss</span>
       
     </footer>
   </main>
